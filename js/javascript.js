@@ -26,7 +26,13 @@ var quotes = [
 	'Sajak says he\'s forgotten all about it, and calls Trebek big fella; and there\'s some towel snapping and general camaraderie.',
 	'I notice them and come over to watch only because Hlasek and Rosset are so beautiful to see; at this point I have no idea who they are. They are practicing groundstrokes down the line—Rosset\'s forehand and Hlasek\'s backhand—each ball plumb-line straight and within centimeters of the corner, the players moving with the compact nonchalance I\'ve since come to recognize in pros when they\'re working out: the suggestion is one of a very powerful engine in low gear.',
 	'...watching him practice is like watching a great artist casually sketch something.',
-	'There are a million little ways you can tell somebody\'s a great player--details in his posture, in the way he bounces the ball with his racquet-head to pick it up, in the casual way he twirls the racquet while waiting for the ball.'
+	'There are a million little ways you can tell somebody\'s a great player--details in his posture, in the way he bounces the ball with his racquet-head to pick it up, in the casual way he twirls the racquet while waiting for the ball.',
+	'The power-baseline game itself has been compared to Metal or Grunge. But what a top P.B.er really resembles is film of the old Soviet Union putting down a rebellion. It\'s awesome, but brutally so, with a grinding, faceless quality about its power that renders that power curiously dull and empty.',
+	'The sort of thinking involved is the sort that can be done only by a living and highly conscious entity, and then only ' + 'un'.italics() + 'consciously, i.e. by combining talent with repetition to such an extent that the variables are combined and controlled without conscious thought. In other words, serious tennis is a kind of art.',
+	'Joyce, preparing to serve, will stare affectlessly straight ahead while he waits for Knowles to finish yelling, his expression sort of like the one Vegas dealers have when a gambler they\'re cleaning out is rude or abusive, a patient and unjudging look whose expression is informed by the fact that they\'re extremely well compensated for being patient and unjudging.',
+	'Knowles seems to be one of these people who view the world\'s inconveniences as specific and personal, and it makes my stomach hurt to watch him.',
+	'Television tends to level everybody out and make them seem kind of blandly handsome, but at Montreal it turns out that a lot of the pros and stars are interesting- or even downright funny-looking.',
+	'The best thing about Enqvist is his girlfriend, who wears glasses and when she applauds a good point sort of hops up and down in her seat with refreshing uncoolness.',	
 ]
 
 function newQuote() {
