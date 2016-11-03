@@ -32,7 +32,17 @@ var quotes = [
 	'Joyce, preparing to serve, will stare affectlessly straight ahead while he waits for Knowles to finish yelling, his expression sort of like the one Vegas dealers have when a gambler they\'re cleaning out is rude or abusive, a patient and unjudging look whose expression is informed by the fact that they\'re extremely well compensated for being patient and unjudging.',
 	'Knowles seems to be one of these people who view the world\'s inconveniences as specific and personal, and it makes my stomach hurt to watch him.',
 	'Television tends to level everybody out and make them seem kind of blandly handsome, but at Montreal it turns out that a lot of the pros and stars are interesting- or even downright funny-looking.',
-	'The best thing about Enqvist is his girlfriend, who wears glasses and when she applauds a good point sort of hops up and down in her seat with refreshing uncoolness.',	
+	'The best thing about Enqvist is his girlfriend, who wears glasses and when she applauds a good point sort of hops up and down in her seat with refreshing uncoolness.',
+	'Sampras is hitting with the casual economy that all really top pros seem to warm up with, the serene nonchalance of a creature at the very top of the food chain.',
+	'Females in the crowds of this year\'s Australian Open apparently screamed and fainted and made with Beatlemania-like histrionics whenever Rafter or Philippoussis appeared, and it\'s true that on the court they are both extremely handsome guys; but it\'s also tru that Mark Philippoussis, close up, looks amazingly like Gaby Sabatini—I mean ' + 'amazingly'.italics() + ', right down to the walk and the jaw line and the existentially affronted facial expression.',
+	'Against him, Sampras seems almost frail, cerebral, a poet, both wise and sad.',
+	'Ads on the subway exploit the fact that subway rides present both a lot of mental downtime and a problem with what to look at.',
+	'Thirty-year-old arbitrageurs in non-rented tuxes at the Bowery Bar dissect various men\'s matches and speculate on how Seles\'s hiatus from the game will affect her endorsement contracts now that she\'s back.',
+	'On the subway, a set of tough chicks in leather and fluorescent hair concur that even though Graf and Seles and that Spanish what\'s-her-face with the hymen in her name might rule, let\'s don\'t for a m.-fucking second count out the U.S.\'s Zina G. \'cause this is her swan-swong before the like bow-out.',
+	'In 1979 I once played two best-of-give matches in one day in a weird non-U.S.T.A. junior thing in suburban Chicago, and one match went five sets and the other four, and even though I was just seventeen I walked like a very old man for days afterward. And since emotional flexibility is almost impossible for a jr., I remember noticing that all of us who\'d played 3/5\'s left the site looking utterly wrung-out emotionally, hollow-eyed, with the 1,000-yard stare of pogrom-survivors.',
+	'The lines for entry at the three active turnstiles resemble those grim photos of trampling crowds at Third World soccer matches.',
+	'It\'s clear that the really serious separation of spectator from his cash takes place at the N.T.C.\'s concession venues, all of which are doing business on the sort of scale enjoyed by coastal grocery and hardware stores during a Hurricane Warning.',
+	'This popcorn being the deep-yellow, highly salty kind that makes an accompanying beverage all but mandatory—same deal with the concessions\' big hot doughy pretzels, Manhattan-street-corner-type pretzels glazed with those nuggets of salt so big that they just about have to be bitten off and chewed separately.'
 ]
 
 function newQuote() {
