@@ -1,1 +1,0 @@
-# hagoptaminian.github.io
