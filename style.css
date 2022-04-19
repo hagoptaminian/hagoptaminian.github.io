@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  background: #f4f8fa;
+}
+
+h1, h4 {
+  text-align: center;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
+}
+
+.project {
+  width: 90%;
+  display: flex;
+  margin: 0 auto;
+}
+
+.heading {
+  font-weight: 700;
+}
+
+.title {
+  width: 15%;
+}
+
+.description {
+  width: 85%;
+}
+
+.title, .description {
+  margin-bottom: 0.75%;
+}
+
+a {
+  color: #5e93ad;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #cc7037;
+}
