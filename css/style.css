@@ -1,0 +1,145 @@
+@import url("https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap");
+
+:root {
+  font-family: "Crimson Text", serif;
+  line-height: 1.5;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  /* font-family: "Crimson Text", serif; */
+  color: rgba(0, 0, 0, 0.87); /* Soft dark gray */
+}
+
+.container {
+  display: flex;
+  /* height: 100vh; Full screen height */
+}
+
+.sidebar {
+  width: 20%;
+  border-right: 1px solid rgb(112, 112, 112, 0.6);
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar a {
+  display: inline-block;
+  text-decoration: none;
+  color: #213966;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.sidebar a:hover {
+  color: #47644b;
+}
+
+.main-content {
+  width: 80%;
+  padding-left: 100px;
+  padding-right: 100px;
+  margin-left: 20%;
+  opacity: 0.87;
+  font-size: 1.125rem;
+  padding-top: 2rem;
+}
+
+.main-content a {
+  display: inline-block;
+  text-decoration: none;
+  color: #3b64b2;
+}
+
+.main-content a:hover {
+  color: #669e6e;
+}
+
+.experiment-heading {
+  font-weight: 900;
+  cursor: pointer; /* Indicates clickability */
+  user-select: none; /* Prevents text selection */
+  color: #3b64b2;
+  /* transition: color 0.2s ease-in-out; */
+}
+
+.experiment-heading:hover {
+  color: #669e6e; /* Changes color on hover (adjust as needed) */
+}
+
+.experiment-sections {
+  display: none;
+}
+
+.sub-heading {
+  font-size: 1rem;
+  /* list-style-type: none; */
+  /* margin-left: 1.5rem; */
+}
+
+.show {
+  display: block;
+}
+
+.writeup-container {
+  font-size: 1.125rem;
+}
+
+.writeup-container > * {
+  margin-bottom: 1.5rem;
+}
+
+.date {
+  width: 100%;
+  text-align: right;
+  font-size: 1rem;
+  margin-top: 1.5rem;
+}
+
+section > * {
+  margin-bottom: 1.5rem;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.results-img {
+  max-width: 60%;
+  display: block;
+  margin: auto;
+  margin-bottom: 1.5rem;
+}
+
+.quote {
+  margin-left: 2rem;
+  font-style: italic;
+}
+
+.video-container {
+  margin: 1.5rem auto;
+  max-width: 800px;
+}
+
+.video {
+  width: 100%;
+  border-radius: 6px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
+}
