@@ -3,8 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Connections Discussion</title>
+    <title>AI vs. NYT Connections - Analysis</title>
     <link rel="stylesheet" href="../css/style.css" />
+    <link rel="icon" type="image/png" href="../favicon.png" />
   </head>
   <body>
     <div class="container">
@@ -16,15 +17,16 @@
         <article class="writeup-container">
           <header>
             <h4>
-              Building a Custom Benchmark: AI vs. NYT
+              Building a Custom Benchmark: AI vs. The New York Times'
               <span class="italic">Connections</span>
             </h4>
-            <p class="date">March 12, 2025</p>
+            <p class="date">March 18, 2025</p>
           </header>
           <section>
             <p>
               After the release of OpenAI’s o1 model in December 2024, I became
-              curious how the model would perform on The New York Times
+              curious how the model would perform on
+              <span class="italic">The New York Times</span>
               <span class="italic">
                 <a
                   href="https://www.nytimes.com/games/connections"
@@ -67,9 +69,9 @@
               Initially, I tested three models: GPT-4o, o1-mini, and o1-preview
               (the strongest o1 model available to me via the API). Just as I
               was finalizing the experiment in February 2025, OpenAI released
-              GPT-4.5. Curious to see how it would perform—especially in
-              comparison to GPT-4o, its predecessor in the same model family—I
-              added the gpt-4.5-preview model to the experiment.
+              GPT-4.5 and gave me API access to o3-mini. Curious to see how
+              these models would perform on the puzzle, I added them to the
+              experiment.
             </p>
             <p>
               For each puzzle, I evaluated each of the models above in two
@@ -92,7 +94,13 @@
               I ran the experiment on 30 daily
               <span class="italic">Connections</span> puzzles between January
               and February 2025. The chart below shows a summary of the results;
-              the full results can be accessed here.
+              the full results can be accessed
+              <a
+                href="../experiments/ai-vs-connections-results"
+                target="_blank"
+                rel="noopener noreferrer"
+                >here</a
+              >.
             </p>
             <figure>
               <img
@@ -108,6 +116,17 @@
               under standard <span class="italic">Connections</span> rules it
               succeeded 100% of the time, a majority of the time without making
               a single mistake.
+            </p>
+            <p>
+              The second best performer was o3-mini, which solved the puzzle 47%
+              of the time in <span class="italic">Single Pass</span> mode and
+              90% of the time in
+              <span class="italic">Four at a Time</span> mode, notably at a
+              fraction of o1-preview’s cost: The average cost of a correct
+              response from o3-mini was $0.02 (<span class="italic"
+                >Single Pass</span
+              >) and $0.07 (<span class="italic">Four at a Time</span>),
+              compared to $0.29 and $0.86 for o1-preview.
             </p>
             <p>
               The other models struggled with the puzzle to varying degrees.
@@ -131,19 +150,20 @@
               models like GPT‑4o.
             </p>
             <p>
-              Despite its superior performance, o1-preview comes with two
-              notable tradeoffs. The first is cost: The average cost of a
-              correct response from o1-preview in
-              <span class="italic">Four at a Time</span> mode was $0.86—more
-              than four times as much as a correct response from o1-mini. The
-              second tradeoff is time. Although I didn’t record the time taken
-              to solve a puzzle—in retrospect it would have been nice to have
-              this data—o1-preview was generally very slow, sometimes taking
-              several minutes to solve a puzzle, especially in
+              Despite its effectiveness, o1-preview comes with two notable
+              tradeoffs. The first, as highlighted above, is cost. o1-preview is
+              generally expensive to run: Its tokens are expensive, and it
+              consumes a lot of them. The second tradeoff is time. Although I
+              didn’t record the time taken to solve a puzzle—in retrospect it
+              would have been nice to have this data—o1-preview was generally
+              very slow, sometimes taking several minutes to solve a puzzle,
+              especially in
               <span class="italic">Four at a Time</span> mode, when there were
-              several exchanges between the interface and the API. o1-mini was
-              also noticeably slow. GPT-4.5 presents an intriguing alternative
-              on this front, since its responses are, like GPT-4o’s, very fast.
+              multiple exchanges between the interface and the API. o1-mini was
+              also noticeably slow; o3-mini was generally pleasantly fast.
+              Overall, o3-mini presents a compelling alternative to o1-preview:
+              It has strong performance while being both reasonably priced and
+              fast.
             </p>
             <p>
               Given that each model was tested on a puzzle just once, one
@@ -153,7 +173,7 @@
               experiment, a consistency evaluation where I ran each of the four
               models on a subset of ten puzzles ten times (in each mode). The
               results can be seen by toggling to Consistency Test on the same
-              link.
+              results link.
             </p>
             <p>
               Broadly, o1-preview is a highly consistent model. On ten runs per
@@ -201,26 +221,27 @@
               It was also interesting to learn that structured outputs do not
               <span class="italic">guarantee</span> that the API will respond
               according to the specified schema. In my experience, failures were
-              rare—perhaps about 1 in 75 times—but they did occur.
+              rare—perhaps about 1 in 100 times—but they did occur.
             </p>
             <p>
               Another small difference in the API implementation is that the
-              o-series models do not take a so-called ‘system’ message, which
-              both gpt-4o and gpt-4.5-preview do. This is the message in the
-              chain of interaction with the API where broad instructions are
-              provided to guide model behavior. It's unclear to me why the
-              o-series models do not take this message; in the application, I
-              ended up providing these instructions in the initial ‘user’
-              message sent to these models.
+              o1-series models do not take a so-called ‘system’ message, which
+              the other models do. This is the message in the chain of
+              interaction with the API where broad instructions are provided to
+              guide model behavior. It's unclear to me why the o1-series models
+              do not take this message; in the application, I ended up providing
+              these models with the game instructions in the initial ‘user’
+              message.
             </p>
           </section>
           <section>
             <h4>Other Thoughts</h4>
             <p>
               Although progress in AI is quickly becoming prosaic, I still find
-              it impressive to watch o1-preview work through and solve a puzzle.
-              To relive the magic, I screen-captured the solver in action one
-              last time, on today’s puzzle:
+              it impressive to watch the strong models—o1-preview and
+              o3-mini—work through and solve a puzzle. To relive the magic, I
+              screen-captured the solver in action one last time, on today’s
+              puzzle:
             </p>
             <figure class="video-container">
               <video src="../assets/video.mov" controls class="video"></video>
@@ -228,18 +249,15 @@
             <p>
               I think the experiment definitively demonstrates that OpenAI’s
               advanced reasoning models can solve
-              <span class="italic">Connections</span>, noting that the model I
-              used with such success was o1-preview, to which there are even
-              more advanced alternatives (o1 itself, and the o3 series).
-              Additionally, the fact that models from non-reasoning paradigms
-              (like GPT-4o) generally cannot solve the puzzle shows that there
-              is indeed something materially different about the
-              reasoning/chain-of-thought models and their ability to tackle
-              logic problems.
+              <span class="italic">Connections</span>. Additionally, the fact
+              that models from non-reasoning paradigms (like GPT-4o) generally
+              cannot solve the puzzle shows that there is indeed something
+              materially different about the reasoning/chain-of-thought models
+              and their ability to tackle logic problems.
             </p>
             <p>
-              Although by no means obvious that we can extrapolate findings from
-              this experiment to other contexts, the superior performance of all
+              Although not obvious that we can extrapolate findings from this
+              experiment to other contexts, the superior performance of all
               models in
               <span class="italic">Four at a Time</span> mode suggests that
               breaking down a problem into smaller steps and providing an AI
