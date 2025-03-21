@@ -165,7 +165,7 @@ section > * {
 @media (max-width: 768px) {
   .main-content {
     width: 90%; /* wider content area on phones */
-    padding: 40px 10px 1.5rem; /* reduce padding */
+    padding: 120px 10px 1.5rem; /* increased top padding to clear navbar */
   }
 
   .results-img {
