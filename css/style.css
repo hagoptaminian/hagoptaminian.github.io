@@ -161,3 +161,23 @@ section > * {
 .fig-caption {
   font-size: 0.975rem;
 }
+
+@media (max-width: 768px) {
+  .main-content {
+    width: 90%; /* wider content area on phones */
+    padding: 40px 10px 1.5rem; /* reduce padding */
+  }
+
+  .results-img {
+    max-width: 100%; /* images take full width */
+  }
+
+  .video-container {
+    max-width: 100%; /* let the video container take full width */
+    padding: 0 10px; /* small horizontal padding to prevent edge-touching */
+  }
+
+  .video {
+    border-radius: 4px; /* slightly reduced radius for smaller screens */
+  }
+}
