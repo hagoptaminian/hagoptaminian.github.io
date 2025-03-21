@@ -17,70 +17,57 @@
 }
 
 body {
-  /* font-family: "Crimson Text", serif; */
-  color: rgba(0, 0, 0, 0.87); /* Soft dark gray */
+  color: rgba(0, 0, 0, 0.87);
 }
 
 .container {
   display: flex;
-  /* height: 100vh; Full screen height */
 }
 
-.sidebar {
-  width: 20%;
-  border-right: 1px solid rgb(112, 112, 112, 0.6);
-  height: 100vh;
-  position: fixed;
-  left: 0;
+.topbar {
+  width: 100%; /* Full-width */
+  height: 60px; /* Adjust height as needed */
+  position: fixed; /* Sticks to the top */
   top: 0;
+  left: 0;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: center; /* Center items horizontally */
   align-items: center;
+  background: white; /* Adjust background as needed */
+  border-bottom: 1px solid rgba(112, 112, 112, 0.6); /* Matches sidebar border */
+  z-index: 1000; /* Ensures it stays above content */
 }
 
-.sidebar a {
-  display: inline-block;
+.topbar a {
   text-decoration: none;
-  color: #213966;
-  font-size: 18px;
+  font-size: 1.2rem;
   font-weight: 600;
-}
-
-.sidebar a:hover {
-  color: #47644b;
+  margin: 0 15px; /* Adds spacing between links */
 }
 
 .main-content {
-  width: 80%;
-  padding-left: 100px;
-  padding-right: 100px;
-  margin-left: 20%;
+  width: 60%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 80px 20px 2rem; /* Extra padding on top to prevent overlap */
   opacity: 0.87;
   font-size: 1.125rem;
-  padding-top: 2rem;
 }
 
-.main-content a {
+a {
   display: inline-block;
   text-decoration: none;
-  color: #3b64b2;
+  color: #213966;
 }
 
-.main-content a:hover {
-  color: #669e6e;
+a:hover {
+  color: #84a9ce;
 }
 
 .experiment-heading {
   font-weight: 900;
-  cursor: pointer; /* Indicates clickability */
-  user-select: none; /* Prevents text selection */
-  color: #3b64b2;
-  /* transition: color 0.2s ease-in-out; */
-}
-
-.experiment-heading:hover {
-  color: #669e6e; /* Changes color on hover (adjust as needed) */
+  cursor: pointer;
+  user-select: none;
 }
 
 .experiment-sections {
@@ -89,8 +76,6 @@ body {
 
 .sub-heading {
   font-size: 1rem;
-  /* list-style-type: none; */
-  /* margin-left: 1.5rem; */
 }
 
 .show {
@@ -105,11 +90,24 @@ body {
   margin-bottom: 1.5rem;
 }
 
+.writeup-container a {
+  color: #6b9bc3;
+}
+
+.writeup-container a:hover {
+  color: #3d6a99;
+}
+
 .date {
   width: 100%;
   text-align: right;
   font-size: 1rem;
   margin-top: 1.5rem;
+  color: rgb(79, 79, 79);
+}
+
+.results-link {
+  font-size: 1rem;
 }
 
 section > * {
@@ -141,5 +139,25 @@ section > * {
   width: 100%;
   border-radius: 6px;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-  object-fit: cover;
+  object-fit: contain;
+}
+
+.experiment-entry {
+  max-width: 700px; /* Controls text width for readability */
+  margin: 0 auto 20px; /* Centers horizontally + adds spacing between entries */
+  text-align: left; /* Ensures text stays left-aligned inside the centered box */
+}
+
+.experiment-entry h4 {
+  margin-bottom: 5px; /* Reduces gap between title and text */
+}
+
+.experiment-entry p {
+  font-size: 1.1rem;
+  color: #444;
+  line-height: 1.5;
+}
+
+.fig-caption {
+  font-size: 0.975rem;
 }
