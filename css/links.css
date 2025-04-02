@@ -1,0 +1,60 @@
+.main-page-header {
+  max-width: 700px;
+  margin: 0 auto 20px;
+  text-align: left;
+}
+
+.main-page-header h4 {
+  margin-bottom: 5px;
+}
+
+.content-liked {
+  max-width: 750px;
+  margin: 0 auto;
+  padding: 80px 20px 2rem; /* Extra padding on top to prevent overlap */
+}
+
+.content-liked h2 {
+  font-size: 1.8rem;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  color: #213966;
+}
+
+.content-entry {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1.8rem;
+}
+
+.content-entry .icon {
+  font-size: 1.2rem;
+  margin-right: 1rem;
+  padding-top: 0.2rem;
+}
+
+.entry-body {
+  flex: 1;
+}
+
+.entry-title a {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.entry-meta {
+  font-size: 0.85rem;
+  color: #777;
+  margin: 0.2rem 0 0.5rem 0;
+}
+
+.entry-description {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #333;
+}
+
+.italic {
+  font-style: italic;
+}

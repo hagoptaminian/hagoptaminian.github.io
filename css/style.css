@@ -64,24 +64,6 @@ a:hover {
   color: #84a9ce;
 }
 
-.experiment-heading {
-  font-weight: 900;
-  cursor: pointer;
-  user-select: none;
-}
-
-.experiment-sections {
-  display: none;
-}
-
-.sub-heading {
-  font-size: 1rem;
-}
-
-.show {
-  display: block;
-}
-
 .writeup-container {
   font-size: 1.125rem;
 }
@@ -142,20 +124,32 @@ section > * {
   object-fit: contain;
 }
 
-.experiment-entry {
-  max-width: 700px; /* Controls text width for readability */
-  margin: 0 auto 20px; /* Centers horizontally + adds spacing between entries */
-  text-align: left; /* Ensures text stays left-aligned inside the centered box */
+.project-entry {
+  max-width: 700px;
+  margin: 0 auto 20px;
+  text-align: left;
 }
 
-.experiment-entry h4 {
-  margin-bottom: 5px; /* Reduces gap between title and text */
+.project-entry h4 {
+  margin-bottom: 5px;
 }
 
-.experiment-entry p {
+.project-entry p {
   font-size: 1.1rem;
   color: #444;
   line-height: 1.5;
+}
+
+.entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.entry-header-date {
+  display: block;
+  font-size: 1rem;
+  color: #333;
 }
 
 .fig-caption {
