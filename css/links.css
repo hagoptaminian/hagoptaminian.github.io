@@ -2,10 +2,12 @@
   max-width: 700px;
   margin: 0 auto 20px;
   text-align: left;
+  display: flex;
+  flex-direction: column;
 }
 
 .main-page-header h4 {
-  margin-bottom: 5px;
+  margin-bottom: 2px;
 }
 
 .content-liked {
