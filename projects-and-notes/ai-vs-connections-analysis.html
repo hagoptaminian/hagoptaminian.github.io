@@ -79,12 +79,11 @@
               I built a web application that allowed me to input the 16 daily
               <span class="italic">Connections</span> words and send them, along
               with the puzzle’s rules, to different OpenAI models for solving.
-              Initially, I tested three models: GPT-4o, o1-mini, and o1-preview
-              (the strongest o1 model available to me via the API). Just as I
-              was finalizing the experiment in February 2025, OpenAI released
-              GPT-4.5 and gave me API access to o3-mini. Curious to see how
-              these models would perform on the puzzle, I added them to the
-              experiment.
+              Initially, I tested three models: GPT-4o, o1-mini, and o1
+              (o1-preview). Just as I was finalizing the experiment in February
+              2025, OpenAI released GPT-4.5 and gave me API access to o3-mini.
+              Curious to see how these models would perform on the puzzle, I
+              added them to the experiment.
             </p>
             <p>
               For each puzzle, I evaluated each of these models in two ‘modes’:
@@ -92,13 +91,13 @@
               <span class="italic">
                 <span class="italic">Single Pass</span>
               </span>
-              , where the model attempted to group all sixteen words into four
-              sets at once, and (2)
+              , where the model attempted to group all 16 words into 4 sets at
+              once, and (2)
               <span class="italic">Four at a Time</span>, where the model
               followed standard <span class="italic">Connections</span>
-              rules, guessing four words per round and receiving feedback
+              rules, guessing 4 words per round and receiving feedback
               (“correct,” “incorrect,” “one away”, or “already guessed”), with
-              up to four mistakes allowed.
+              up to 4 mistakes allowed.
             </p>
           </section>
           <section>
@@ -123,8 +122,8 @@
               />
             </figure>
             <p>
-              In short, o1-preview is almost always able to solve the puzzle. In
-              the harder
+              In short, o1 is almost always able to solve the puzzle. In the
+              harder
               <span class="italic">Single Pass</span> mode, it identified all
               four groupings correctly 83% of the time. Under standard
               <span class="italic">Connections</span> rules, it succeeded 100%
@@ -142,9 +141,8 @@
               o1-mini performed decently in
               <span class="italic">Four at a Time</span> mode, solving the
               puzzle 50% of the time in that mode. Despite not being a reasoning
-              model, GPT-4.5 (gpt-4.5-preview) had comparable performance to
-              o1-mini, and was clearly superior to GPT-4o. This aligns with
-              OpenAI
+              model, GPT-4.5 had comparable performance to o1-mini, and was
+              clearly superior to GPT-4o. This aligns with OpenAI
               <a
                 href="https://openai.com/index/introducing-gpt-4-5/"
                 target="_blank"
@@ -169,10 +167,10 @@
                 />
               </figure>
               <p>
-                Despite its effectiveness, o1-preview has two notable drawbacks,
-                the first being cost. The model is expensive to use, with high
-                token costs and heavy token consumption. The average cost per
-                correct response from o1-preview was $0.29 (<span class="italic"
+                Despite its effectiveness, o1 has two notable drawbacks, the
+                first being cost. The model is expensive to use, with high token
+                costs and heavy token consumption. The average cost per correct
+                response from o1 was $0.29 (<span class="italic"
                   >Single Pass</span
                 >) and $0.86 (<span class="italic">Four at a Time</span>). For
                 comparison, a correct response from the next best overall
@@ -184,17 +182,17 @@
               <p>
                 The second drawback is time. Although I didn’t record how long
                 each puzzle took to solve—in hindsight, this would have been
-                useful—o1-preview was generally very slow, sometimes taking
-                several minutes to work through a puzzle. This was especially
-                noticeable in
+                useful—o1 was generally very slow, sometimes taking several
+                minutes to work through a puzzle. This was especially noticeable
+                in
                 <span class="italic">Four at a Time</span> mode, where there
                 were multiple exchanges between the interface and the API.
                 o1-mini was also noticeably slow, while o3-mini was consistently
                 faster.
               </p>
               <p>
-                Overall, o3-mini is a compelling alternative to o1-preview,
-                balancing strong performance with affordability and speed.
+                Overall, o3-mini is a compelling alternative to o1, balancing
+                strong performance with affordability and speed.
               </p>
             </section>
             <section>
@@ -215,15 +213,15 @@
                 >.
               </p>
               <p>
-                Overall, o1-preview is a highly consistent model. Across 100
-                runs (10 runs per puzzle on 10 puzzles) in
+                Overall, o1 is a highly consistent model. Across 100 runs (10
+                runs per puzzle on 10 puzzles) in
                 <span class="italic">Four at a Time</span> mode, the model
                 failed to solve a puzzle just once. It also showed high
                 consistency in <span class="italic">Single Pass</span> mode: It
                 solved a puzzle 80% of the time or more in 60% of the sample,
                 and struggled to solve the two puzzles in the sample it failed
                 to solve on its initial run, solving them just 20% and 30% of
-                the time. That said, while o1-preview is
+                the time. That said, while o1 is
                 <span class="italic">highly</span> consistent in
                 <span class="italic">Single Pass</span> mode, it is not
                 <span class="italic">perfectly</span> consistent—meaning it can
@@ -244,10 +242,10 @@
             <p>
               OpenAI’s API implementation differs depending on the model being
               used. The most significant difference in this experiment was that
-              o1-mini and o1-preview do not support structured outputs—meaning
-              they cannot generate JSON responses that strictly follow a
-              predefined schema. This was essential for the solver interface,
-              particularly in
+              o1-mini and o1 do not support structured outputs—meaning they
+              cannot generate JSON responses that strictly follow a predefined
+              schema. This was essential for the solver interface, particularly
+              in
               <span class="italic">Four at a Time</span> mode, where the model’s
               guess needed to be validated and evaluated for the solving
               sequence to continue. A simple workaround was to ask the o1 models
@@ -266,14 +264,14 @@
             </p>
           </section>
           <section>
-            <h4>Other Thoughts</h4>
+            <h4>Other thoughts</h4>
             <p>
               Although it feels like AI model improvements are quickly becoming
-              routine, I still find it both impressive and fun to watch strong
-              models like o1-preview work through and solve a
+              routine, I still find it impressive and fun to watch strong models
+              like o1 work through and solve a
               <span class="italic">Connections</span> puzzle. I still get
-              tempted to run the daily puzzle through the solver to see
-              o1-preview solve it—or maybe finally stumble!
+              tempted to run the daily puzzle through the solver to see o1 solve
+              it—or maybe finally fail.
             </p>
             <p>
               For fun, I recorded the solver in action one last time on today’s
@@ -286,7 +284,7 @@
                 class="video"
               ></video>
               <figcaption class="fig-caption">
-                The solver interface: o1-preview solving the
+                The solver interface: o1 solving the
                 <span class="italic">Connections</span>
                 puzzle from March 18, 2025. Notice the model's slowness
                 (fast-forward to 1:10 to see its first response).
@@ -295,10 +293,10 @@
             <p>
               I think the experiment clearly shows that OpenAI’s advanced
               reasoning models <span class="italic">can</span> solve
-              <span class="italic">Connections</span>. Moreover, the inability
-              of non-reasoning models (like GPT-4o) to solve the puzzle
-              reinforces that reasoning/chain-of-thought models are
-              fundamentally different in their ability to tackle logic problems.
+              <span class="italic">Connections</span>. Moreover, the failure of
+              non-reasoning models (like GPT-4o) to solve the puzzle underscores
+              that reasoning/chain-of-thought models are fundamentally better at
+              solving logic problems.
             </p>
             <p>
               Although we shouldn’t assume that these findings generalize to
@@ -308,16 +306,16 @@
               with feedback can improve their performance.
             </p>
             <p>
-              With the exception of o1-preview in
+              With the exception of o1 in
               <span class="italic">Four at a Time</span> mode, inconsistent
-              model performance remains a nagging issue. For example, out of 10
-              puzzles tested for consistency with o1-preview in
+              model performance is a nagging issue. For example, out of 10
+              puzzles tested for consistency with o1 in
               <span class="italic">Single Pass</span> mode, 4 puzzles were
               solved only 70-80% of the time—that is, the model solved them
               <span class="italic">most</span> of the time but not always. This
-              creates a problem: a model that usually produces the correct
+              presents a problem: a model that usually produces the correct
               result, but occasionally stumbles. Once again, while we can’t
-              necessarily extrapolate from this experiment to other contexts,
+              necessarily generalize from this experiment to other contexts,
               this suggests that even tried-and-tested AI models should not be
               relied on uncritically.
             </p>
