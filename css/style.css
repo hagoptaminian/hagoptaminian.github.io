@@ -107,6 +107,13 @@ section > * {
   margin-bottom: 1.5rem;
 }
 
+.results-2-img {
+  max-width: 75%;
+  display: block;
+  margin: auto;
+  margin-bottom: 1.5rem;
+}
+
 .quote {
   margin-left: 2rem;
   font-style: italic;
@@ -163,6 +170,10 @@ section > * {
   }
 
   .results-img {
+    max-width: 100%; /* images take full width */
+  }
+
+  .results-2-img {
     max-width: 100%; /* images take full width */
   }
 
