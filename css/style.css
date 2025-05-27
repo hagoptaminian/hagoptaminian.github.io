@@ -163,6 +163,12 @@ section > * {
   font-size: 0.975rem;
 }
 
+ul {
+  /* padding: 0; Adjust to match your paragraph indenting */
+  margin-left: 0;
+  list-style-position: inside;
+}
+
 @media (max-width: 768px) {
   .main-content {
     width: 90%; /* wider content area on phones */
