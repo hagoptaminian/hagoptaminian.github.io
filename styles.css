@@ -73,6 +73,7 @@ a:hover {
 
 .file-entry {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
   padding: 1.2rem 0;
@@ -82,6 +83,13 @@ a:hover {
 .entry-main {
   flex: 1;
   margin-right: 2rem;
+  width: 100%;
+}
+
+.entry-heading {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .file-title {
@@ -90,6 +98,7 @@ a:hover {
   letter-spacing: -0.2px;
   display: inline-block;
   margin-bottom: 0.5rem;
+  width: 80%;
 }
 
 .file-description {
@@ -97,6 +106,7 @@ a:hover {
   font-size: 0.85rem;
   line-height: 1.6;
   font-family: var(--font-sans);
+  width: 80%;
 }
 
 .post-date {
