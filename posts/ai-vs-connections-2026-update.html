@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI vs. NYT Connections (2026 Update)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="icon" type="image/png" sizes="any" href="/favicon.png" />
+  </head>
+
+  <body>
+    <div class="content-container">
+      <a href="../index.html" class="back-link">← Back to index</a>
+
+      <div class="post">
+        <div class="post-header">
+          <h3 class="post-title">
+            <strong
+              >Running a Custom Benchmark: AI vs. The New York Times'
+              <cite><i>Connections</i></cite> (2026 Update)
+            </strong>
+          </h3>
+          <span class="post-headline-link"
+            ><a
+              href="./ai-vs-connections-results-2026/index.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              >View Results</a
+            ></span
+          >
+          <div class="post-meta">
+            <span>March 1, 2026</span>
+          </div>
+        </div>
+
+        <div class="post-content">
+          <h4>Introduction</h4>
+          <p>
+            When AI ’thinking’ models were first introduced in late 2024–early
+            2025, I became curious how these models would perform on the
+            <cite>The New York Times</cite> word game
+            <a
+              href="https://www.nytimes.com/games/connections"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><i>Connections</i></a
+            >. To find out, I built an application to programmatically
+            evaluate—via model APIs—how different LLMs perform on the puzzle.
+            The results from that experiment last year can be found
+            <a
+              href="./ai-vs-connections-analysis.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              >here</a
+            >
+            (OpenAI models) and
+            <a
+              href="./ai-vs-connections-analysis-part-ii.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              >here</a
+            >
+            (expanded to include models from other providers like Google,
+            Anthropic, and others).
+          </p>
+          <p>
+            About a year later, we have probably become used to LLMs solving
+            complex math and logic problems, but this was new and non-obvious at
+            the time. In last year’s experiment, OpenAI’s then-strongest model
+            (o1) solved the puzzle 100% of the time (<i>N</i> = 30), but
+            Google’s strongest model (Gemini 2.5 Pro) only managed 83% and
+            Anthropic’s strongest performer (Claude 3.7 Sonnet) only 57%.
+          </p>
+          <p>
+            Partly out of curiosity—I still play <i>Connections</i> every day,
+            and often find myself wondering how an AI model would handle a
+            particularly tricky puzzle—I decided to restart the experiment in
+            2026.
+          </p>
+          <p>
+            The setup for this year’s experiment was essentially the same as
+            <a
+              href="./ai-vs-connections-analysis.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              >last year’s</a
+            >. I updated the application through which the experiment is run,
+            mainly to account for changes in model APIs. I also added a new
+            dimension to the experiment: although <i>Connections</i> rules don’t
+            require players to name a theme when they make a guess, the models
+            in the experiment were asked to provide one. Through an
+            ‘LLM-as-judge’ workflow, I evaluated models on the correctness of
+            the themes they provided.
+          </p>
+          <p>
+            I evaluated models from OpenAI, Anthropic, Google, DeepSeek,
+            Mistral, and Cohere on a sample of 50 daily
+            <i>Connections</i> puzzles, starting January 1, 2026. The full
+            results, including the exact models tested and their
+            reasoning/thinking settings, can be found
+            <a
+              href="./ai-vs-connections-results-2026/index.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              >here</a
+            >.
+          </p>
+
+          <h4>Results: Discussion</h4>
+
+          <figure>
+            <img src="../assets/results-2026.png" class="post-image-2026" />
+            <figcaption>
+              <span class="figure-title">Figure 1.</span> Solve rate across
+              models under standard <i>Connections</i> rules (<i>N</i> = 50).
+            </figcaption>
+          </figure>
+
+          <p>
+            As shown in the chart above, the best models from OpenAI, Anthropic,
+            Google, and DeepSeek performed very well on <i>Connections</i>.
+            Under standard <i>Connections</i> rules (‘Four at a Time’ mode),
+            these models scored at least 92% (<i>N</i> = 50). GPT 5.2 (at
+            reasoning levels ‘low’ and ‘medium’) scored 100%, as did Gemini 3
+            Pro (at thinking level ‘high’). Although not shown in the chart,
+            Google’s Gemini 3 Flash (at thinking = ‘high’) also scored 100%.
+            Anthropic’s Claude Opus 4.5 scored 98% at ‘low’ and ‘medium’
+            thinking levels; in a sample of 50 puzzles, this means the model
+            failed to solve just one puzzle (at each thinking setting). DeepSeek
+            Reasoner scored 96%.
+          </p>
+          <p>
+            Although the sample evaluated is still relatively small, the results
+            suggest that the top models, especially GPT 5.2 and both versions of
+            Gemini 3, are effectively near-certain to solve <i>Connections</i>.
+          </p>
+          <p>
+            Given convergence in model performance on the main benchmark measure
+            (puzzle solve rate), differentiating between models requires
+            shifting to efficiency factors like cost and latency, and secondary
+            performance measures like solving the puzzle with fewer mistakes.
+          </p>
+          <p>
+            The charts below are scatterplots of model performance versus (1)
+            cost and (2) latency.
+          </p>
+
+          <figure>
+            <img src="../assets/cost-2026.png" class="post-image-2026" />
+            <figcaption>
+              <span class="figure-title">Figure 2.</span> Solve rate vs
+              estimated cost per correct response (token usage × list price).
+            </figcaption>
+          </figure>
+          <figure>
+            <img src="../assets/latency-2026.png" class="post-image-2026" />
+            <figcaption>
+              <span class="figure-title">Figure 3.</span> Solve rate vs
+              client-observed latency (per correct response).
+            </figcaption>
+          </figure>
+
+          <p>
+            GPT 5.2 is the standout performer on these measures. In addition to
+            its 100% puzzle solve rate, it is also the cheapest and fastest
+            model (among the top performers), delivering correct responses at an
+            average cost of $0.03–$0.04 (at reasoning efforts ‘low’ and
+            ‘medium’, respectively) and an average latency of 45–65 seconds.
+            Claude Opus 4.5 (medium) was the outlier in terms of cost ($0.39
+            average, with several responses costing $0.70+), while DeepSeek
+            Reasoner was the outlier in terms of latency (a painful average of 8
+            minutes for a correct response, with many runs going for more than
+            15 minutes). On the other hand, Reasoner was also undeniably the
+            cheapest model, consistently delivering correct responses for less
+            than $0.01.
+          </p>
+
+          <figure class="table-container">
+            <table class="results-table">
+              <thead>
+                <tr>
+                  <th>Model</th>
+                  <th>Theme Error Rate</th>
+                  <th>P(0 mistakes)</th>
+                  <th>P(≤1 mistakes)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>DeepSeek Reasoner</td>
+                  <td>11%</td>
+                  <td>50%</td>
+                  <td>79%</td>
+                </tr>
+                <tr>
+                  <td>Claude Opus 4.5 (low)</td>
+                  <td>9%</td>
+                  <td>63%</td>
+                  <td>92%</td>
+                </tr>
+                <tr>
+                  <td>Claude Opus 4.5 (medium)</td>
+                  <td>5%</td>
+                  <td>82%</td>
+                  <td>96%</td>
+                </tr>
+                <tr>
+                  <td>Gemini 3 Pro (low)</td>
+                  <td>9%</td>
+                  <td>41%</td>
+                  <td>76%</td>
+                </tr>
+                <tr>
+                  <td>Gemini 3 Pro (high)</td>
+                  <td class="best-performance-table-cell">2%</td>
+                  <td class="best-performance-table-cell">96%</td>
+                  <td class="best-performance-table-cell">98%</td>
+                </tr>
+                <tr>
+                  <td>GPT 5.2 (low)</td>
+                  <td>14%</td>
+                  <td>58%</td>
+                  <td>90%</td>
+                </tr>
+                <tr>
+                  <td>GPT 5.2 (medium)</td>
+                  <td>12%</td>
+                  <td>68%</td>
+                  <td>96%</td>
+                </tr>
+              </tbody>
+            </table>
+            <figcaption>
+              <span class="figure-title">Table 1.</span> Secondary performance
+              measures.
+            </figcaption>
+          </figure>
+
+          <p>
+            I also tracked two secondary performance measures. First, as
+            highlighted above, models in this year’s experiment were evaluated
+            on theme correctness. Occasionally, models would find a correct
+            grouping of terms, but name an obviously incorrect theme connecting
+            those terms. For example, on the February 17 puzzle, for the terms
+            ‘BOMBAY’, ‘BUSTLE’, ‘FLOPPY’, and ‘MISSUS’, GPT 5.2 (medium) named
+            the theme ‘Words that end with a silent letter’, which is obviously
+            incorrect (correct theme: ‘STARTING WITH SYNONYMS FOR “DUD”’).
+          </p>
+
+          <p>
+            That said, this pattern ultimately appears to be a byproduct of the
+            interaction format rather than genuine confusion. In
+            <i>The New York Times</i> game, players aren’t required to name
+            themes at all, and once three groups are solved, the remaining four
+            terms are effectively forced. In a similar way, many models in the
+            experiment seem to treat theme naming on the final solved group as
+            low-value overhead, and focus on simply submitting the remaining
+            terms.
+          </p>
+
+          <p>
+            Two pieces of evidence support this interpretation. First, many
+            models with high theme error rates in <i>Four at a Time</i> mode had
+            far lower error rates in <i>Single Pass</i> mode. For example, GPT
+            5.2 (medium) had a theme error rate of 1% in
+            <i>Single Pass</i> mode, versus 12% in <i>Four at a Time</i> (GPT
+            5.2 low: 2% vs. 14%). Second, theme mistakes in
+            <i>Four at a Time</i> mode are overwhelmingly concentrated on the
+            final solved group: for GPT 5.2 (medium), 22 of 23 incorrect themes
+            occurred in the final group (GPT 5.2 low: 25 out of 27; DeepSeek
+            Reasoner: 18 out of 22).
+          </p>
+
+          <p>
+            Despite this caveat, Gemini 3 Pro (high) was the standout performer
+            on theme correctness, naming an incorrect theme only 2% of the time
+            (4 times out of 200). Notably, it did not exhibit the same
+            “final-group sloppiness” seen in other models: its theme labels
+            remained accurate even on the last solved group.
+          </p>
+
+          <p>
+            Models were also evaluated on P(0 mistakes) and P(≤1 mistakes), i.e.
+            the percentage of puzzles a model solved (1) without making a
+            mistake and (2) with one or fewer mistakes. Once again, Gemini 3 Pro
+            (high) was the standout performer, solving 96% of puzzles without a
+            single mistake. Performance converged across models for P(≤1
+            mistakes), with many scoring 90%+. It’s worth noting that GPT 5.2
+            and Opus 4.5 may have achieved similar results to Gemini 3 Pro at
+            higher reasoning/thinking levels; they were only tested at ‘low’ and
+            ‘medium’ settings.
+          </p>
+
+          <p>
+            Finally, two other models were evaluated in the experiment:
+            Magistral Medium 1.2 (from French company Mistral) and Command A
+            Reasoning (from Canadian company Cohere). Mistral’s model was
+            disappointing. Billed as its “frontier-class multimodal reasoning
+            model”, it solved
+            <i>Connections</i> just 4% of the time. It’s unclear why it performs
+            so badly on the puzzle; Mistral
+            <a
+              href="https://mistral.ai/news/magistral"
+              target="_blank"
+              rel="noopener noreferrer"
+              >cites</a
+            >
+            strong performance from the model on public math benchmarks like
+            AIME. The speed of its responses suggests that the model wasn’t
+            undertaking extended reasoning at all, and unlike models from other
+            vendors there was no ‘thinking budget’ to configure to ensure that
+            it did so. Command A, Cohere’s frontier reasoning model, performed
+            better than Magistral, solving the puzzle 38% of the time, but was
+            still far from the best performers discussed above.
+          </p>
+
+          <h4>Reflections</h4>
+          <p>
+            I still find it extremely impressive that these models can solve
+            <i>Connections</i>, and consistently identify even the most subtle
+            relationships between terms. To name just a few examples, I think
+            it's incredible that Gemini 3 Pro was able to identify that
+            ‘LESSON’, ‘RESEED’, ‘SYNC’, and ‘WAYNE’ are ‘Homophones of words
+            meaning “decrease”’ or that ‘ELLEN’, ‘SPINY’, ‘TIMER’, and ‘USE’ are
+            ‘Magazines plus one letter’.
+          </p>
+          <p>
+            Leaving aside why and how the models can do this—<i>Connections</i>
+            is a public, recurring, and heavily discussed puzzle, and the models
+            likely benefit not just from broad lexical and semantic knowledge
+            acquired from vast English language training data, but also from
+            having learned the puzzle’s format, patterns, and style—I still
+            think it’s remarkable that a technology that can do this exists.
+          </p>
+          <p>
+            Compared with last year, it’s clear that the models have gotten
+            better at the puzzle. While only OpenAI’s o1 scored 100% on a sample
+            of 30 puzzles last year, several models did so this year, and at a
+            fraction of the cost. Just two years ago, none of this was even
+            possible.
+          </p>
+
+          <p>
+            As AI vendors and models proliferate, I think benchmarking is going
+            to become an increasingly important feature of AI implementation.
+            This is especially true when headline benchmark measures saturate,
+            in which case efficiency measures (such as cost and latency) and
+            secondary performance measures (such as, in this experiment, the
+            expected number of mistakes) will be more significant as
+            differentiators between models.
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
