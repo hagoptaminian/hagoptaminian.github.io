@@ -142,9 +142,9 @@
           </p>
           <p>
             Given convergence in model performance on the main benchmark measure
-            (puzzle solve rate), differentiating between models requires
-            shifting to efficiency factors like cost and latency, and secondary
-            performance measures like solving the puzzle with fewer mistakes.
+            (puzzle solve rate), efficiency factors (like cost and latency) and
+            secondary performance measures (like solving the puzzle with fewer
+            mistakes) become necessary to differentiate between models.
           </p>
           <p>
             The charts below are scatterplots of model performance versus (1)
@@ -254,27 +254,22 @@
           </p>
 
           <p>
-            That said, this pattern ultimately appears to be a byproduct of the
-            interaction format rather than genuine confusion. In
+            That said, this pattern ultimately appears to be largely a byproduct
+            of the interaction format rather than genuine confusion. In
             <i>The New York Times</i> game, players aren’t required to name
             themes at all, and once three groups are solved, the remaining four
             terms are effectively forced. In a similar way, many models in the
             experiment seem to treat theme naming on the final solved group as
             low-value overhead, and focus on simply submitting the remaining
-            terms.
-          </p>
-
-          <p>
-            Two pieces of evidence support this interpretation. First, many
-            models with high theme error rates in <i>Four at a Time</i> mode had
-            far lower error rates in <i>Single Pass</i> mode. For example, GPT
-            5.2 (medium) had a theme error rate of 1% in
-            <i>Single Pass</i> mode, versus 12% in <i>Four at a Time</i> (GPT
-            5.2 low: 2% vs. 14%). Second, theme mistakes in
-            <i>Four at a Time</i> mode are overwhelmingly concentrated on the
-            final solved group: for GPT 5.2 (medium), 22 of 23 incorrect themes
-            occurred in the final group (GPT 5.2 low: 25 out of 27; DeepSeek
-            Reasoner: 18 out of 22).
+            terms. Indeed, theme naming mistakes for many models are
+            overwhelmingly concentrated in the final solved group: for GPT 5.2
+            (medium), 22 of 23 incorrect themes occurred in the final group (GPT
+            5.2 low: 25 out of 27; DeepSeek Reasoner: 18 out of 22).
+            Additionally, many models with high theme error rates in
+            <i>Four at a Time</i> mode had far lower error rates in
+            <i>Single Pass</i> mode. For example, GPT 5.2 (medium) had a theme
+            error rate of 1% in <i>Single Pass</i> mode, versus 12% in
+            <i>Four at a Time</i> (GPT 5.2 low: 2% vs. 14%).
           </p>
 
           <p>
