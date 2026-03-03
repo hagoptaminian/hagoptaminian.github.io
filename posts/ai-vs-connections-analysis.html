@@ -11,7 +11,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../styles.css" />
-    <link rel="icon" type="image/png" sizes="any" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="any" href="/favicon.png" />
   </head>
 
   <body>
@@ -116,7 +116,11 @@
               >here</a
             >.
           </p>
-          <img src="../assets/results.png" class="post-image" />
+          <img
+            src="../assets/results.png"
+            class="post-image"
+            alt="OpenAI model performance on <cite>Connections</cite> puzzles (N = 30)"
+          />
           <p>
             In short, o1 is almost always able to solve the puzzle. In the
             harder <i>Single Pass</i> mode, it identified all four groupings
@@ -153,7 +157,11 @@
           </blockquote>
 
           <h4>Performance vs. Cost</h4>
-          <img src="../assets/cost.png" class="post-image" />
+          <img
+            src="../assets/cost.png"
+            class="post-image"
+            alt="Cost per correct response (OpenAI models)"
+          />
           <p>
             Despite its effectiveness, o1 has two notable drawbacks, the first
             being cost. The model is expensive to use, with high token costs and
@@ -196,12 +204,12 @@
           </p>
           <p>
             Overall, o1 is a highly consistent model. Across 100 runs (10 runs
-            per puzzle on 10 puzzles) in <i>Four at a Time</i> mode, the model failed
-            to solve a puzzle just once. It also showed high consistency in
-            <i>Single Pass</i> mode: It solved a puzzle 80% of the time or more
-            in 60% of the sample, and struggled to solve the two puzzles in the
-            sample it failed to solve on its initial run, solving them just 20%
-            and 30% of the time. That said, while o1 is
+            per puzzle on 10 puzzles) in <i>Four at a Time</i> mode, the model
+            failed to solve a puzzle just once. It also showed high consistency
+            in <i>Single Pass</i> mode: It solved a puzzle 80% of the time or
+            more in 60% of the sample, and struggled to solve the two puzzles in
+            the sample it failed to solve on its initial run, solving them just
+            20% and 30% of the time. That said, while o1 is
             <em>highly</em> consistent in <i>Single Pass</i> mode, it is not
             <em>perfectly</em>
             consistent—meaning it can occasionally fail to solve a puzzle it is
