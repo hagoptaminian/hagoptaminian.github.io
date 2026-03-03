@@ -127,17 +127,16 @@
           </figure>
 
           <p>
-            As shown in the chart above, the best models from OpenAI, Anthropic,
-            Google, and DeepSeek performed very well on <i>Connections</i>.
-            Under standard <i>Connections</i> rules (‘Four at a Time’ mode),
-            these models scored at least 92% (<i>N</i> = 50). GPT 5.2 (at
-            reasoning levels ‘low’ and ‘medium’) scored 100%, as did Gemini 3
-            Pro (at thinking level ‘high’). Although not shown in the chart,
-            Google’s Gemini 3 Flash (at thinking = ‘high’) also scored 100%.
-            Anthropic’s Claude Opus 4.5 scored 98% at ‘low’ and ‘medium’
-            thinking levels; in a sample of 50 puzzles, this means the model
-            failed to solve just one puzzle (at each thinking setting). DeepSeek
-            Reasoner scored 96%.
+            The best models from OpenAI, Anthropic, Google, and DeepSeek
+            performed very well on <i>Connections</i>. Under standard
+            <i>Connections</i> rules (‘Four at a Time’ mode), these models
+            scored at least 92% (<i>N</i> = 50). GPT 5.2 (at reasoning levels
+            ‘low’ and ‘medium’) scored 100%, as did Gemini 3 Pro (at thinking
+            level ‘high’). Although not shown in the chart, Google’s Gemini 3
+            Flash (at thinking = ‘high’) also scored 100%. Anthropic’s Claude
+            Opus 4.5 scored 98% at ‘low’ and ‘medium’ thinking levels; in a
+            sample of 50 puzzles, this means the model failed to solve just one
+            puzzle (at each thinking setting). DeepSeek Reasoner scored 96%.
           </p>
           <p>
             Although the sample evaluated is still relatively small, the results
@@ -148,7 +147,7 @@
             Given convergence in model performance on the main benchmark measure
             (puzzle solve rate), efficiency factors (like cost and latency) and
             secondary performance measures (like solving the puzzle with fewer
-            mistakes) become necessary to differentiate between models.
+            mistakes) become more significant differentiators between models.
           </p>
           <p>
             The charts below are scatterplots of model performance versus (1)
@@ -285,17 +284,17 @@
             lower error rates in <i>Single Pass</i> mode. For example, GPT 5.2
             (medium) had a theme error rate of 1% in <i>Single Pass</i> mode,
             versus 12% in <i>Four at a Time</i> (GPT 5.2 low: 2% vs. 14%); for
-            the puzzle mentioned above, in <i>Single Pass</i> mode the model
-            correctly identified the theme as ‘Start with a synonym for
+            the puzzle mentioned above, in <i>Single Pass</i> mode GPT 5.2
+            (medium) correctly identified the theme as ‘Start with a synonym for
             failure’.
           </p>
 
           <p>
-            Despite this caveat, Gemini 3 Pro (high) was the standout performer
-            on theme correctness, naming an incorrect theme only 2% of the time
-            (4 times out of 200). Notably, it did not exhibit the same
-            “final-group sloppiness” seen in other models: its theme labels
-            remained accurate even on the last solved group.
+            Nonetheless, Gemini 3 Pro (high) was the standout performer on theme
+            correctness, naming an incorrect theme only 2% of the time (4 times
+            out of 200). Notably, it did not exhibit the same “final-group
+            sloppiness” seen in other models: its theme labels remained accurate
+            even on the last solved group.
           </p>
 
           <p>
@@ -365,7 +364,7 @@
             This is especially true when headline benchmark measures saturate,
             in which case efficiency measures (such as cost and latency) and
             secondary performance measures (such as, in this experiment, the
-            probability of solving with zero mistakes) will be more significant
+            probability of solving with ≤1 mistakes) will be more significant
             differentiators between models.
           </p>
         </div>
