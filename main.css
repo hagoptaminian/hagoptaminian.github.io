@@ -1,0 +1,144 @@
+:root {
+  --bg: #ffffff;
+  --bg-soft: #f6f8fa;
+  --text: #1a1f36;
+  --text-light: #4f566b;
+  --accent: #1e56b1;
+  --accent-hover: #ff7b5b;
+  --border: #e3e8ef;
+  --font-mono: "IBM Plex Mono", monospace;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  padding: 1.5rem 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+.content-container {
+  padding: 0.5rem 0;
+  width: 100%;
+  max-width: 740px;
+}
+
+.main-page-heading {
+  font-family: var(--font-mono);
+  color: var(--text-light);
+  font-size: 0.9rem;
+  margin: 1.5rem 0 0.75rem;
+}
+
+.main-page-heading strong {
+  text-decoration: underline;
+}
+
+.main-page-entry-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0.75rem 0;
+}
+
+.main-page-entry {
+  padding: 1.2rem 0;
+  border-bottom: 1px solid var(--border);
+  width: 100%;
+}
+
+.main-page-entry-heading {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.main-page-entry-title {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  letter-spacing: -0.2px;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  width: 80%;
+}
+
+.entry-description {
+  color: var(--text-light);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  font-family: var(--font-sans);
+  width: 80%;
+}
+
+.entry-date {
+  color: var(--text-light);
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  letter-spacing: -0.2px;
+  white-space: nowrap;
+  padding-top: 0.15rem;
+}
+
+.about {
+  padding: 1rem;
+  background: var(--bg-soft);
+  border-radius: 6px;
+  margin: 0.75rem 0;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: var(--text-light);
+}
+
+.month-link {
+  padding: 0 0.3rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+.months-list {
+  margin-top: 0.8rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.main-page-entry-title-static {
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  letter-spacing: -0.2px;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  width: 80%;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 2rem 1rem;
+  }
+}
