@@ -101,8 +101,8 @@
             the themes they provided.
           </p>
           <p>
-            I evaluated models from OpenAI, Anthropic, Google, DeepSeek,
-            Mistral, and Cohere on a sample of 50 daily
+            I tested models from OpenAI, Anthropic, Google, DeepSeek, Mistral,
+            and Cohere on a sample of 50 daily
             <i>Connections</i> puzzles, starting January 1, 2026. The full
             results, including the exact models tested and their
             reasoning/thinking settings, can be found
@@ -267,36 +267,44 @@
           </p>
 
           <p>
-            That said, this pattern ultimately appears to be largely a byproduct
-            of the interaction format rather than genuine confusion. In
-            <i>The New York Times</i> game, players aren’t required to name
-            themes at all, and once three groups are solved, the remaining four
-            terms are effectively forced. In a similar way, many models in the
-            experiment seem to treat theme naming on the final solved group as
-            low-value overhead, and focus on simply submitting the remaining
-            terms.
+            I thought this metric would be a useful proxy for how accurately
+            models were identifying relationships between terms; a high theme
+            error rate would suggest that the models were either frequently
+            making lucky guesses, or seeing unintended (and perhaps unexpected)
+            relationships between terms.
           </p>
 
           <p>
-            Indeed, theme naming mistakes for many models are overwhelmingly
-            concentrated in the final solved group: for GPT 5.2 (medium), 22 of
-            23 incorrect themes occurred in the final group (GPT 5.2 low: 25 out
-            of 27; DeepSeek Reasoner: 18 out of 22). Additionally, many models
-            with high theme error rates in <i>Four at a Time</i> mode had far
-            lower error rates in <i>Single Pass</i> mode. For example, GPT 5.2
-            (medium) had a theme error rate of 1% in <i>Single Pass</i> mode,
-            versus 12% in <i>Four at a Time</i> (GPT 5.2 low: 2% vs. 14%); for
-            the puzzle mentioned above, in <i>Single Pass</i> mode GPT 5.2
-            (medium) correctly identified the theme as ‘Start with a synonym for
-            failure’.
+            Some models, like GPT 5.2 and DeepSeek reasoner, did in fact turn
+            out to have higher theme error rates than others—but in all
+            probability as a byproduct of the interaction format rather than due
+            to genuine confusion. In <i>The New York Times</i> game, players
+            aren’t required to name themes at all, and once three groups are
+            solved, the remaining four terms are effectively forced. In a
+            similar way, it seems that many models in the experiment treat theme
+            naming on the final solved group as low-value overhead, and focus on
+            simply submitting the remaining terms.
           </p>
 
           <p>
-            Nonetheless, Gemini 3 Pro (high) was the standout performer on theme
-            correctness, naming an incorrect theme only 2% of the time (4 times
-            out of 200). Notably, it did not exhibit the same “final-group
-            sloppiness” seen in other models: its theme labels remained accurate
-            even on the last solved group.
+            The data strongly supports this interpretation. For GPT 5.2 (low),
+            the theme error rate was 14%, but 25 of 27 incorrect themes occurred
+            on the final solved group; GPT 5.2 (medium) (22/23) and DeepSeek
+            Reasoner (18/22) showed similar patterns. Further supporting this
+            interpretation, these same models had far lower theme error rates in
+            <i>Single Pass</i> mode: for example, only 1% for GPT 5.2 (medium)
+            (vs. 12% in <i>Four at a Time</i>). (For the puzzle mentioned above,
+            in <i>Single Pass</i>
+            mode GPT 5.2 (medium) correctly identified the theme as ‘Start with
+            a synonym for failure’).
+          </p>
+
+          <p>
+            This caveat notwithstanding, Gemini 3 Pro (high) was the standout
+            performer on theme correctness, naming an incorrect theme only 2% of
+            the time (4 times out of 200). Notably, it did not exhibit the same
+            “final-group sloppiness” seen in other models: its theme labels
+            remained accurate even on the last solved group.
           </p>
 
           <p>
