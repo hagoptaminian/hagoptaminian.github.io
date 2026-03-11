@@ -277,21 +277,23 @@
           <p>
             Some models, like GPT 5.2 and DeepSeek reasoner, did in fact turn
             out to have higher theme error rates than others—but in all
-            probability as a byproduct of the interaction format rather than due
-            to genuine confusion. In <i>The New York Times</i> game, players
-            aren’t required to name themes at all, and once three groups are
-            solved, the remaining four terms are effectively forced. In a
-            similar way, it seems that many models in the experiment treat theme
-            naming on the final solved group as low-value overhead, and focus on
-            simply submitting the remaining terms.
+            probability as a byproduct of the <i>Connections</i> interaction
+            format rather than due to genuine confusion. In
+            <i>The New York Times</i> game, players aren’t required to name
+            themes at all, and once three groups are solved, the remaining four
+            terms are effectively forced. In a similar way, it seems that many
+            models in the experiment treat theme naming on the final solved
+            group as low-value overhead, and focus on simply submitting the
+            remaining terms, which accounts for their high theme error rates.
           </p>
 
           <p>
-            The data strongly supports this interpretation. For GPT 5.2 (low),
-            the theme error rate was 14%, but 25 of 27 incorrect themes occurred
-            on the final solved group; GPT 5.2 (medium) (22/23) and DeepSeek
-            Reasoner (18/22) showed similar patterns. Further supporting this
-            interpretation, the same models had far lower theme error rates in
+            The data strongly supports this interpretation. GPT 5.2 (low) had a
+            theme error rate of 14%, but 25 of the 27 incorrect themes it named
+            were on the final solved group. GPT 5.2 (medium) (22/23) and
+            DeepSeek Reasoner (18/22) showed similar patterns. Further
+            supporting this interpretation, these same models had far lower
+            theme error rates in
             <i>Single Pass</i> mode: for example, only 1% for GPT 5.2 (medium)
             (vs. 12% in <i>Four at a Time</i>). (For the puzzle mentioned above,
             in <i>Single Pass</i>
