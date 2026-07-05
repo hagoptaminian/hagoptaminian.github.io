@@ -363,7 +363,7 @@
             <i>Pips</i>? As I learned, when given access to a coding
             environment, instead of trying to solve puzzles by relying purely on
             internal reasoning, models just write code to solve the puzzle. Even
-            if <i>Pips</i> is a somewhat novel format, it belongs to a class of
+            if <i>Pips</i> is somewhat novel, it belongs to a class of
             puzzles—like Sudoku, N-Queens, crosswords, and other constraint
             satisfaction problems—that models have likely seen many times during
             training. These problems are solvable with broadly similar
@@ -405,8 +405,8 @@ wait, then region D cannot be satisfied; let me go back.”</code></pre>
 
           <p>
             Although we now take it for granted that frontier models are good at
-            writing code, I still find their ability to write a working
-            backtracking solver for <i>Pips</i> genuinely impressive. The
+            writing code, I still thought their ability to write a working
+            backtracking solver for <i>Pips</i> was genuinely impressive. The
             underlying algorithm is not exotic, and the models have likely seen
             many examples of recursive backtracking and constraint satisfaction
             problems. But the solver is not trivial either, and the model is not
@@ -442,13 +442,13 @@ C: {constraint: "sum", value: 10}</code></pre>
 
           <p>
             To solve this puzzle algorithmically, a few steps are required.
-            First, the solver has to identify the possible geometric tilings of
-            the board, i.e. the configurations in which tiles can cover the
-            board while ignoring their values. In this simple puzzle, there are
-            only two possible geometric tilings: one in which the top-left cell
-            is paired horizontally, and one in which it is paired vertically.
-            Once that first choice is made, the rest of the cell pairings are
-            forced.
+            First, the solver has to identify the possible
+            <i>geometric tilings</i> of the board—that is, the configurations in
+            which tiles can cover the board while ignoring their values. In this
+            simple puzzle, there are only two possible geometric tilings: one in
+            which the top-left cell is paired horizontally, and one in which it
+            is paired vertically. Once that first choice is made, the rest of
+            the cell pairings are forced.
           </p>
 
           <p>
@@ -491,8 +491,8 @@ C: {constraint: "sum", value: 10}</code></pre>
             laying tiles while checking against the regional constraints
             requires some delicate coordination between the various data
             structures representing the puzzle. In other words, the model is not
-            merely "using code"; there is some magic in its ability to turn an
-            unfamiliar puzzle format into a working solver.
+            merely "using code"; there is some magic in its ability to generate
+            a working solver from the puzzle's representation.
           </p>
 
           <h4>Agentic loop failures</h4>
@@ -505,9 +505,9 @@ C: {constraint: "sum", value: 10}</code></pre>
             it was interesting to me to try to understand why. Were they, for
             example, writing an incorrect solver? Although I didn’t investigate
             every failure, I looked at enough of them to see three recurring
-            failure modes. (These became apparent only as I worked through the
-            results; if I were running the experiment again, I would track them
-            more systematically from the start).
+            failure modes. (The failures became apparent only as I worked
+            through the results; if I were running the experiment again, I would
+            track them more systematically from the start).
           </p>
 
           <p>
