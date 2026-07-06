@@ -49,43 +49,42 @@
               rel="noopener noreferrer"
               ><i>Pips</i></a
             >
-            is a new New York Times logic puzzle, introduced in August 2025. Its
-            format is familiar, with a faint resemblance to Sudoku. A grid,
+            is a new New York Times logic puzzle, introduced in August 2025. It
+            has a familiar format, with a faint resemblance to Sudoku. A grid,
             usually irregularly shaped, is divided into a number of regions,
-            each satisfying a given mathematical constraint, like ‘sums to 7’ or
-            ‘all numbers equal’. The player is given a set of two-sided domino
-            tiles, which must be laid on the grid in a way that satisfies all of
-            the regional constraints. The puzzle is released daily in three
+            each satisfying a given mathematical constraint, like “sums to 7” or
+            “all numbers equal.” The player is given a set of two-sided domino
+            tiles, which must be placed on the grid in a way that satisfies all
+            regional constraints. The puzzle is released daily in three
             difficulties: easy, medium, and hard. The easy puzzles are genuinely
             trivial, while the hard ones are often tricky and require some
             persistence to solve.
           </p>
 
           <p>
-            Out of pure curiosity, I was interested to see how AI models would
+            Out of curiosity, I was interested to see how AI models would
             perform on <i>Pips</i>. I thought the puzzle’s somewhat novel format
             would make it a useful toy problem for seeing how models handle
-            unfamiliar-looking tasks. Although I expected that the models would
-            solve the puzzle, I still wanted to run the experiment to see if
-            this was true. Would some models stumble? How would their
-            performance change with puzzle difficulty? How would it compare
-            across providers? I thought there was a chance I could learn
-            something new, so I just went for it.
+            unfamiliar-looking tasks. Some quick test runs on ChatGPT suggested
+            that the models would be able to solve the puzzle, but I still
+            wanted to run the experiment to see if this was broadly true. Would
+            some models stumble? How would their performance change with puzzle
+            difficulty? How would it compare across providers?
           </p>
 
           <h4>Summary</h4>
           <p>
-            It turns out that the question of whether "models" can solve
-            <i>Pips</i> is underspecified. Although some "naked" models—that is,
-            models without tools—perform well on <i>Pips</i>, this is not
-            usually the best way to solve the puzzle.
+            It turns out that the question of whether “models” can solve
+            <i>Pips</i> may be underspecified. Although some ”naked” models—that
+            is, models without tools—perform well on <i>Pips</i>, this is not
+            the best way to solve the puzzle.
           </p>
           <p>
             A key distinction to emerge from the experiment is whether the
             models also have access to a code execution tool. Although this
             seems obvious in retrospect, I confess that I did not have this
             distinction clearly in mind when I first thought of the experiment.
-            This is partly because I had not realized that
+            This is mainly because I had not realized that
             <i>Pips</i> is best solved algorithmically, but also partly because
             I had unthinkingly fallen into the habit of assuming that models are
             the sole source of intelligence across problem-solving tasks.
@@ -93,29 +92,30 @@
           <p>
             Despite its slightly unfamiliar format, <i>Pips</i> belongs to a
             class of constraint satisfaction problems that can be solved with a
-            fairly standard backtracking algorithm—basically, an algorithm that
+            fairly standard backtracking algorithm—that is, an algorithm that
             recursively examines candidate board layouts and prunes branches
-            which turn out to be dead ends. When given access to a code tool—all
-            of the models tested in the experiment have a native implementation
-            of such a tool, which can be enabled in API requests—models
-            generally solve <i>Pips</i> by writing a backtracking algorithm and
-            executing it via the tool. By contrast, without a code tool, models
-            end up trying to implement a similar algorithm inside their
-            reasoning context, an environment poorly suited to preserving and
-            manipulating precise, complex state, like the current board layout,
-            which tiles have been used, and so on.
+            which turn out to be dead ends, until it lands on a valid solution.
+            When given access to a code tool—all of the models tested in the
+            experiment have a native implementation of such a tool, which can be
+            enabled in API requests—models generally solve <i>Pips</i> by
+            writing a backtracking algorithm and executing it via the tool. By
+            contrast, without a code tool, models end up trying to implement a
+            similar algorithm inside their reasoning context, an environment
+            poorly suited to preserving and manipulating precise, complex state,
+            like the current board layout, which tiles have been used, and the
+            sums per region.
           </p>
           <p>
             Although model intelligence is being used to solve <i>Pips</i> in
-            both settings, the role of that intelligence is different in
-            each—and with it what the experiment is measuring. Without a code
-            tool, success on the puzzle depends heavily on the model’s ability
-            to maintain and manipulate the problem state inside its own context.
-            With a code tool, the model’s role shifts toward recognizing that
-            the puzzle can be solved algorithmically, formulating a solving
-            strategy, writing code to carry it out, and interfacing with the
-            tool.
+            both settings, the role of that intelligence is different in each.
+            Without a code tool, success on the puzzle depends on the model’s
+            ability to maintain and manipulate the problem state inside its own
+            context. With a code tool, the model’s role shifts toward
+            recognizing that the puzzle can be solved algorithmically,
+            formulating a solving strategy, writing code to carry it out, and
+            interfacing with the tool.
           </p>
+          <!-- Add something short here on the actual results? -->
           <p>
             Even with access to a code tool, in the experiment the native
             API-based model-tool agent loop was sometimes brittle. In many
@@ -126,13 +126,13 @@
             what had otherwise been a correct solution.
           </p>
           <p>
-            The experiment also showed that using more intelligence—stronger
-            models and higher thinking budgets—to solve the puzzle is not always
-            beneficial. It’s not just that similar performance can sometimes be
-            achieved more cheaply and efficiently with weaker models, though
+            In the experiment, using more intelligence—stronger models and
+            higher thinking budgets—to solve the puzzle was not always
+            beneficial. This is not just because similar performance can often
+            be achieved more cheaply and efficiently with weaker models, though
             that is important. Rather, in some cases, giving a model more room
             to think made its performance worse, by making it more likely that
-            it would try to reason through the puzzle in-context instead of
+            it would try to reason through a puzzle in-context instead of
             delegating to the code tool.
           </p>
 
@@ -155,7 +155,7 @@
           </p>
           <p>Each API call included three main pieces of puzzle data:</p>
 
-          <ul>
+          <ul class="spaced-out-list">
             <li>
               <strong>Grid</strong>: the puzzle represented as an array of
               arrays, with each sub-array corresponding to a row of the grid.
@@ -165,46 +165,45 @@
             </li>
             <li>
               <strong>Regional constraints:</strong> an object describing the
-              constraints per region, along the lines of “A”: {constraint:
-              “sum”, value: 9}. In line with the New York Times puzzle, there
-              are five types of constraints: ‘sum’, ‘sum less than’, ‘sum
-              greater than’, ‘all equal’, and ‘all different’.
+              constraints per region, along the lines of
+              <code> “A”: {constraint: “sum”, value: 9} </code>. In line with
+              the New York Times puzzle, there are five types of constraints:
+              “sum,” “sum less than,” “sum greater than,” “all equal,” and “all
+              different.”
             </li>
             <li>
-              <strong>Tiles:</strong> an array of the available domino tiles,
-              with each tile represented as an array of two numbers, one for
-              each side of the tile.
+              <strong>Tiles:</strong> an array of the available tiles, with each
+              tile represented as an array of two numbers, one for each side of
+              the tile.
             </li>
           </ul>
 
           <p>
-            This representation of the puzzle was sent along with a description
-            of the puzzle’s rules in the system instructions message of the API
-            call, and a JSON schema specifying the required response format,
-            allowing for straightforward response verification.
+            This representation of the puzzle was sent along with (1) a
+            description of the puzzle’s rules in the system instructions message
+            of the API call, and (2) a JSON schema specifying the required
+            response format, allowing for straightforward response verification.
           </p>
 
           <p>
             The following models were tested in the experiment: (1) GPT 5.4
             (OpenAI), (2) Gemini 3 Flash (Google), (3) Gemini 3.1 Pro (Google),
             (4) Claude Sonnet 4.6 (Anthropic), and (5) Claude Opus 4.7
-            (Anthropic). Ultimately, one of the key distinctions to emerge from
-            the experiment was between two settings: one in which models were
-            given access to the native code execution tool provided with their
-            APIs, and one in which they were not.
-          </p>
-
-          <p>
-            These models were tested under various ‘thinking’ settings, outlined
-            in detail in the experiment's
+            (Anthropic). Each of these was tested with and without access to
+            their native code execution tool, and under various ‘thinking’
+            settings, outlined in detail in the experiment's
             <a
               href="./ai-vs-pips-results/index.html"
               target="_blank"
               rel="noopener noreferrer"
               >results</a
             >
-            page. The experiment was run on 20 daily puzzles (at three
-            difficulty settings) between April and May 2026.
+            page.
+          </p>
+
+          <p>
+            The experiment was run on 20 daily puzzles, at three difficulty
+            settings each day, between April and May 2026.
           </p>
 
           <h4>Results</h4>
@@ -212,29 +211,20 @@
             Although this seems obvious in retrospect, the "naked" models—that
             is, the core LLMs without access to a code tool—are not naturally
             well-suited for solving <i>Pips</i>, especially as puzzle difficulty
-            and complexity increase. Some of the models performed well without a
-            code tool: GPT 5.4 medium had a 100% solve rate on hard puzzles,
-            while GPT 5.4 high and Gemini 3.1 Pro high each scored 95% (Figure
-            1). However, these results came at a relatively high average cost
-            ($0.19, $0.23, and $0.26 per correct response, respectively, for
-            those models) and latency (3m 9s, 4m 12s, and 2m 41s, respectively).
-            Other models without tools struggled with the puzzle. Claude Opus
-            4.7, for example, solved only 55% of hard puzzles, often failing
-            after consuming its full token budget.
+            and complexity increase.
           </p>
 
           <p>
-            More importantly, access to tools made weaker models, even at lower
-            thinking settings, strong performers on the puzzle. This pattern
-            held broadly across the models tested. For example, without tools,
-            Gemini 3 Flash solved at most 40% of hard puzzles, even with
-            thinking = high. With tools, Gemini 3 Flash with thinking = minimal
-            solved 95% of those puzzles (Table 1). Similar gains appeared with
-            Gemini 3.1 Pro low, which improved from 10% to 70%; Gemini 3.1 Pro
-            medium, which improved from 75% to 100%; and Claude Sonnet 4.6 with
-            adaptive thinking, which improved from 5% to 45%. Models equipped
-            with tools also generally solved puzzles at lower cost and with
-            lower latency.
+            Some of the models performed well without a code tool: GPT 5.4
+            medium had a 100% solve rate on hard puzzles, while GPT 5.4 high and
+            Gemini 3.1 Pro high each scored 95% (Figure 1); in a sample of only
+            20 puzzles, this is just one mistake per model. However, these
+            results came at a relatively high average cost ($0.19, $0.23, and
+            $0.26 per correct response, respectively, for those models) and
+            latency (3m 9s, 4m 12s, and 2m 41s, respectively). Other models
+            without tools struggled with the puzzle. Claude Opus 4.7, for
+            example, solved only 55% of hard puzzles, often failing after
+            consuming its full token budget.
           </p>
 
           <figure>
@@ -257,10 +247,24 @@
             </figcaption>
           </figure>
 
+          <p>
+            More importantly, access to tools made weaker models, even at lower
+            thinking settings, strong performers on the puzzle. This pattern
+            held broadly across the models tested. For example, without tools,
+            Gemini 3 Flash solved at most 40% of hard puzzles, even with
+            thinking = high. With tools, Gemini 3 Flash with thinking = minimal
+            solved 95% of those puzzles (Table 1). Similar gains appeared with
+            Gemini 3.1 Pro low, which improved from 10% to 70%; Gemini 3.1 Pro
+            medium, which improved from 75% to 100%; and Claude Sonnet 4.6 with
+            adaptive thinking, which improved from 5% to 45%. Models equipped
+            with tools also generally solved puzzles at lower cost and with
+            lower latency.
+          </p>
+
           <figure class="table-container">
             <table class="results-table">
               <thead>
-                <tr>
+                <tr class="row-group-end">
                   <th>Model</th>
                   <th>Thinking</th>
                   <th>Tool</th>
@@ -278,7 +282,7 @@
                   <td>$0.13</td>
                   <td>62</td>
                 </tr>
-                <tr>
+                <tr class="row-group-end">
                   <td>GPT 5.4</td>
                   <td>Low</td>
                   <td>Yes</td>
@@ -294,7 +298,7 @@
                   <td>$0.19</td>
                   <td>189</td>
                 </tr>
-                <tr>
+                <tr class="row-group-end">
                   <td>GPT 5.4</td>
                   <td>Medium</td>
                   <td>Yes</td>
@@ -310,7 +314,7 @@
                   <td>$0.08</td>
                   <td>103</td>
                 </tr>
-                <tr>
+                <tr class="row-group-end">
                   <td>Gemini 3 Flash</td>
                   <td>Minimal</td>
                   <td>Yes</td>
@@ -326,7 +330,7 @@
                   <td>$0.18</td>
                   <td>112</td>
                 </tr>
-                <tr>
+                <tr class="row-group-end">
                   <td>Gemini 3.1 Pro</td>
                   <td>Medium</td>
                   <td>Yes</td>
@@ -441,8 +445,8 @@ C: {constraint: "sum", value: 10}</code></pre>
           <pre><code>[[5, 2], [6, 6], [3, 4], [0, 4]]</code></pre>
 
           <p>
-            To solve this puzzle algorithmically, a few steps are required.
-            First, the solver has to identify the possible
+            To solve this puzzle with a backtracking algorithm, a few steps are
+            required. First, the solver has to identify the possible
             <i>geometric tilings</i> of the board—that is, the configurations in
             which tiles can cover the board while ignoring their values. In this
             simple puzzle, there are only two possible geometric tilings: one in
@@ -480,7 +484,7 @@ C: {constraint: "sum", value: 10}</code></pre>
             backtracks and tries the next available alternative: a different
             orientation, a different tile, or eventually a different geometric
             layout. This continues until every tile has been placed and all of
-            the regional constraints are satisfied, i.e. a solution is found.
+            the regional constraints are satisfied—that is, a solution is found.
           </p>
 
           <p>
@@ -490,9 +494,9 @@ C: {constraint: "sum", value: 10}</code></pre>
             can be substantially more complex than the one above. Recursively
             laying tiles while checking against the regional constraints
             requires some delicate coordination between the various data
-            structures representing the puzzle. In other words, the model is not
-            merely "using code"; there is some magic in its ability to generate
-            a working solver from the puzzle's representation.
+            structures representing the puzzle. In other words, to say that the
+            model simply "solves the puzzle with code" can downplay, in my
+            opinion, how impressive what it does is.
           </p>
 
           <h4>Agentic loop failures</h4>
@@ -504,19 +508,19 @@ C: {constraint: "sum", value: 10}</code></pre>
             a code tool. Other models did better, but failed often enough that
             it was interesting to me to try to understand why. Were they, for
             example, writing an incorrect solver? Although I didn’t investigate
-            every failure, I looked at enough of them to see three recurring
-            failure modes. (The failures became apparent only as I worked
-            through the results; if I were running the experiment again, I would
-            track them more systematically from the start).
+            every failure—these became apparent only as I generated results; if
+            I were running the experiment again, I would track them more
+            systematically from the start—I looked at enough of them to see
+            three recurring failure modes.
           </p>
 
           <p>
             The first was common across almost all models, and revolved around a
             minor quirk in the puzzle format. Repeatedly, models would identify
             that the puzzle could be solved with code, write a correct solver,
-            hand that off to the code execution tool, receive a correct
-            solution, and then make one small recurring error in the response
-            they sent back to the client. Because tiles in
+            hand it off to the code execution tool, receive a correct solution,
+            and then make one small error in the response they sent back to the
+            client. Because tiles in
             <i>Pips</i> can be rotated, the code tool would often return a
             perfectly correct result wherein some tiles were reversed from their
             original orientation. For example, if tile <code>[5, 6]</code> went
@@ -535,31 +539,31 @@ C: {constraint: "sum", value: 10}</code></pre>
 
           <figure>
             <img
-              src="../assets/all_puzzles_with_tools.png"
+              src="../assets/puzzles_with_tools.png"
               class="writeup-image-2026"
               alt=""
             />
             <figcaption>
-              <span class="figure-title">Figure 2.</span> With-tool results (all
-              models, all puzzle difficulties, <i>N</i> = 20 per difficulty).
+              <span class="figure-title">Figure 2.</span> % of Medium and hard
+              puzzles solved (With tools, <i>N</i> = 20 per difficulty)
             </figcaption>
           </figure>
 
           <p>
             The second failure mode occurred when models had access to the code
-            execution tool but did not use it; tool availability does not
-            guarantee tool use. This was particularly common with the two Claude
-            models, especially—and somewhat counterintuitively—when their
-            thinking configuration was set to adaptive rather than off. Because
-            adaptive thinking gives the models an allowance to reason, in many
-            cases they would attempt to solve the puzzle in context, rather than
-            writing a code-based solver—the more reliable strategy. Conversely,
-            without a thinking budget, the models were quicker to write a solver
-            and delegate to the tool, perhaps because they had little choice but
-            to do so. Thus, under the ‘with-tools’ setting, Claude Sonnet 4.6
-            (no thinking) solved 75% of hard puzzles (vs. 45% w/adaptive
-            thinking), and Opus 4.7 (no thinking) solved 85% of hard puzzles
-            (vs. 55% w/adaptive thinking).
+            execution tool but failed to use it. Tool availability does not
+            guarantee tool use. This failure was particularly common with the
+            two Claude models, especially—and maybe somewhat
+            counterintuitively—when their thinking configuration was set to
+            adaptive rather than off. Because adaptive thinking gives the models
+            an allowance to reason, in many cases they would attempt to solve
+            the puzzle in context, rather than writing a code-based solver (the
+            more reliable strategy). Conversely, without a thinking budget, the
+            models were quicker to write a solver and delegate to the tool,
+            perhaps because they had little choice but to do so. Thus, under the
+            ‘with-tools’ setting, Claude Sonnet 4.6 (no thinking) solved 75% of
+            hard puzzles (vs. 45% w/adaptive thinking), and Opus 4.7 (no
+            thinking) solved 85% of hard puzzles (vs. 55% w/adaptive thinking).
           </p>
 
           <p>
@@ -586,26 +590,24 @@ C: {constraint: "sum", value: 10}</code></pre>
             strong and reliable results. I expect the same to be true of other
             tasks requiring precise bookkeeping and state management, such as
             data analysis and financial modeling, especially as these grow
-            complex. In these cases, tools allow each component to do what it
-            does best: models handle strategy, planning, and coordination, while
-            the code tool provides a precise and deterministic execution
-            environment.
+            complex. In these cases, tools allow each component of the system to
+            do what it does best: models handle strategy, planning, and
+            coordination, while the code tool provides a precise and
+            deterministic execution environment.
           </p>
 
           <p>
-            More broadly, the experiment made me think less in terms of isolated
-            model capability and more in terms of system design. Tool use is one
-            part of that, but not the whole story. Although this was a fairly
-            simple experiment, and was not intended to create a robust
+            Although this was a fairly simple experiment, and not intended to
+            create a robust
             <i>Pips</i>
             solver, it helped me see how a carefully designed system could
             improve performance on the puzzle. For example, supplementing the
-            native code execution tool with client-side helper tools—functions
-            like <code>verifyResult</code> and <code>formatSolution</code>—would
+            code execution tool with client-side helper tools—functions like
+            <code>verifyResult</code> or <code>formatSolution</code>—would
             remove some overhead from the model and eliminate some of the
             observed sources of error in the model-tool loop, like when the
-            model made small adjustments to the tool’s correct response. More
-            explicit prompting could also nudge the model to use the tool more
+            model made adjustments to the tool’s response. More explicit
+            prompting could also nudge the model to use the tool more
             effectively. For example, instead of the experiment’s deliberately
             neutral instruction—"You have access to a code execution/interpreter
             tool"—a strategy-explicit prompt might add something like: "Use the

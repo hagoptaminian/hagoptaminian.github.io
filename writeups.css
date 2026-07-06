@@ -11,12 +11,16 @@ ul {
   list-style-position: inside;
   margin-bottom: 1.5rem;
   color: var(--text-light);
-  line-height: 1.8;
+  /* line-height: 1.8; */
   font-size: 0.9rem;
 }
 
 ul li + li {
   margin-top: 0.75rem;
+}
+
+.spaced-out-list li + li {
+  margin-top: 1.5rem;
 }
 
 .writeup-image {
@@ -53,6 +57,11 @@ th {
 td {
   border: 1px solid #bbb;
   padding: 0.5em 1em;
+}
+
+.results-table tr.row-group-end td,
+tr.row-group-end th {
+  border-bottom: 1px solid #4f566b;
 }
 
 figure {
