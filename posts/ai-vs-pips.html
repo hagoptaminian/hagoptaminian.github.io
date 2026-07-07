@@ -50,15 +50,15 @@
               ><i>Pips</i></a
             >
             is a new New York Times logic puzzle, introduced in August 2025. It
-            has a familiar format, with a faint resemblance to Sudoku. A grid,
-            usually irregularly shaped, is divided into a number of regions,
-            each satisfying a given mathematical constraint, like “sums to 7” or
-            “all numbers equal.” The player is given a set of two-sided domino
-            tiles, which must be placed on the grid in a way that satisfies all
-            regional constraints. The puzzle is released daily in three
-            difficulties: easy, medium, and hard. The easy puzzles are genuinely
-            trivial, while the hard ones are often tricky and require some
-            persistence to solve.
+            has a familiar-looking format, with a faint resemblance to Sudoku. A
+            grid, usually irregularly shaped, is divided into a number of
+            regions, each satisfying a given mathematical constraint, like “sums
+            to 7” or “all numbers equal.” The player is given a set of two-sided
+            domino tiles, which must be placed on the grid in a way that
+            satisfies all regional constraints. The puzzle is released daily in
+            three difficulties: easy, medium, and hard. The easy puzzles are
+            genuinely trivial, while the hard ones are often tricky and require
+            some persistence to solve.
           </p>
 
           <p>
@@ -76,64 +76,74 @@
           <p>
             It turns out that the question of whether “models” can solve
             <i>Pips</i> may be underspecified. Although some ”naked” models—that
-            is, models without tools—perform well on <i>Pips</i>, this is not
-            the best way to solve the puzzle.
+            is, models without tools—perform well on <i>Pips</i>, this is
+            usually not the best way to solve the puzzle.
           </p>
           <p>
-            A key distinction to emerge from the experiment is whether the
-            models also have access to a code execution tool. Although this
-            seems obvious in retrospect, I confess that I did not have this
-            distinction clearly in mind when I first thought of the experiment.
-            This is mainly because I had not realized that
-            <i>Pips</i> is best solved algorithmically, but also partly because
-            I had unthinkingly fallen into the habit of assuming that models are
-            the sole source of intelligence across problem-solving tasks.
+            A central distinction to emerge from the experiment is whether the
+            models also have access to a code execution tool. This may seem
+            obvious in retrospect, but it was not a distinction I had fully
+            appreciated when I first thought of the experiment, primarily
+            because I had not realized that
+            <i>Pips</i> is best solved algorithmically.
           </p>
           <p>
             Despite its slightly unfamiliar format, <i>Pips</i> belongs to a
             class of constraint satisfaction problems that can be solved with a
-            fairly standard backtracking algorithm—that is, an algorithm that
+            fairly standard “backtracking“ algorithm—that is, an algorithm that
             recursively examines candidate board layouts and prunes branches
-            which turn out to be dead ends, until it lands on a valid solution.
-            When given access to a code tool—all of the models tested in the
-            experiment have a native implementation of such a tool, which can be
-            enabled in API requests—models generally solve <i>Pips</i> by
-            writing a backtracking algorithm and executing it via the tool. By
-            contrast, without a code tool, models end up trying to implement a
-            similar algorithm inside their reasoning context, an environment
-            poorly suited to preserving and manipulating precise, complex state,
-            like the current board layout, which tiles have been used, and the
-            sums per region.
+            which turn out to be dead ends, until it finds a valid solution.
+            When given access to a code tool—all of the models tested here have
+            a native implementation of such a tool, which can be enabled in API
+            requests—models generally solve <i>Pips</i> by writing a
+            backtracking algorithm and executing it via the tool. By contrast,
+            without a code tool, models end up trying to implement a similar
+            algorithm inside their reasoning context, an environment poorly
+            suited to preserving and manipulating precise, complex state, such
+            as the current board layout, which tiles have been used, and the
+            regional sums.
           </p>
           <p>
-            Although model intelligence is being used to solve <i>Pips</i> in
-            both settings, the role of that intelligence is different in each.
-            Without a code tool, success on the puzzle depends on the model’s
-            ability to maintain and manipulate the problem state inside its own
-            context. With a code tool, the model’s role shifts toward
-            recognizing that the puzzle can be solved algorithmically,
-            formulating a solving strategy, writing code to carry it out, and
-            interfacing with the tool.
-          </p>
-          <!-- Add something short here on the actual results? -->
-          <p>
-            Even with access to a code tool, in the experiment the native
-            API-based model-tool agent loop was sometimes brittle. In many
-            cases, models wrote a perfectly correct puzzle solver, only for
-            failures to occur at the hand-off points between the model and the
-            tool. Most commonly, the model would make an apparently harmless
-            adjustment to the tool’s correct response, introducing an error into
-            what had otherwise been a correct solution.
+            Although model intelligence is solving <i>Pips</i> in both settings,
+            the role of that intelligence is different in each. Without a code
+            tool, success on the puzzle depends on the model’s ability to
+            maintain and manipulate the problem state inside its own context.
+            With a code tool, the model’s role shifts toward recognizing that
+            the puzzle can be solved algorithmically, formulating a solving
+            strategy, writing code to carry it out, and interfacing with the
+            tool.
           </p>
           <p>
-            In the experiment, using more intelligence—stronger models and
-            higher thinking budgets—to solve the puzzle was not always
-            beneficial. This is not just because similar performance can often
-            be achieved more cheaply and efficiently with weaker models, though
-            that is important. Rather, in some cases, giving a model more room
-            to think made its performance worse, by making it more likely that
-            it would try to reason through a puzzle in-context instead of
-            delegating to the code tool.
+            In the experiment, some models without a code tool performed well on
+            <i>Pips</i>: GPT 5.4 (medium) solved 100% of the hard puzzles in the
+            sample, while GPT 5.4 (high) and Gemini 3.1 Pro (high) each scored
+            95%. However, these results generally came at higher cost and
+            latency relative to the tool-enabled condition; for example, for GPT
+            5.4 (medium), average cost and latency per correct response were
+            $0.09 and 92 seconds with tools, versus $0.19 and 189 seconds
+            without. Additionally, tool access made weaker models better
+            performers on the puzzle than stronger models without tools: for
+            example, Gemini 3 Flash (High) without tools solved only 40% of hard
+            puzzles, while Gemini 3 Flash (Minimal) with tools solved 95% of
+            those puzzles.
+          </p>
+          <p>
+            Even with access to a code tool, in the experiment the API-based
+            model-tool loop was sometimes brittle. In many cases, models wrote a
+            perfectly correct puzzle solver, only for failures to occur at the
+            handoff points between the model and the tool. Most commonly, the
+            model would make an apparently harmless adjustment to the tool’s
+            correct response, introducing an error into what had otherwise been
+            a correct solution.
+          </p>
+          <p>
+            In the experiment, using more capable models, or giving models
+            larger thinking budgets, was not always beneficial. This is not just
+            because similar performance can often be achieved more cheaply and
+            efficiently with weaker models. Rather, in some cases, giving a
+            model more room to think made its performance worse, by making it
+            more likely that it would try to reason through a puzzle in-context
+            instead of delegating to the code tool.
           </p>
 
           <h4>Experimental Setup</h4>
@@ -159,13 +169,13 @@
             <li>
               <strong>Grid</strong>: the puzzle represented as an array of
               arrays, with each sub-array corresponding to a row of the grid.
-              Each item in a row represented a cell: assigned to a region,
-              marked as unconstrained, or set to null (for an empty/unplayable
-              part of the board).
+              Each item in a row represented a cell, which was assigned to a
+              region, marked as unconstrained, or set to null (for an
+              empty/unplayable part of the board).
             </li>
             <li>
               <strong>Regional constraints:</strong> an object describing the
-              constraints per region, along the lines of
+              constraints for each region, along the lines of
               <code> “A”: {constraint: “sum”, value: 9} </code>. In line with
               the New York Times puzzle, there are five types of constraints:
               “sum,” “sum less than,” “sum greater than,” “all equal,” and “all
@@ -180,9 +190,9 @@
 
           <p>
             This representation of the puzzle was sent along with (1) a
-            description of the puzzle’s rules in the system instructions message
-            of the API call, and (2) a JSON schema specifying the required
-            response format, allowing for straightforward response verification.
+            description of the puzzle’s rules in the system instructions for the
+            API call, and (2) a JSON schema specifying the required response
+            format, allowing for straightforward response verification.
           </p>
 
           <p>
@@ -208,10 +218,9 @@
 
           <h4>Results</h4>
           <p>
-            Although this seems obvious in retrospect, the "naked" models—that
-            is, the core LLMs without access to a code tool—are not naturally
-            well-suited for solving <i>Pips</i>, especially as puzzle difficulty
-            and complexity increase.
+            The ”naked” models—that is, the core LLMs without access to a code
+            tool—are not naturally well-suited for solving <i>Pips</i>,
+            especially as puzzle difficulty and complexity increase.
           </p>
 
           <p>
@@ -364,25 +373,25 @@
 
           <p>
             Why do code tools make even weaker models better at solving
-            <i>Pips</i>? As I learned, when given access to a coding
-            environment, instead of trying to solve puzzles by relying purely on
-            internal reasoning, models just write code to solve the puzzle. Even
-            if <i>Pips</i> is somewhat novel, it belongs to a class of
-            puzzles—like Sudoku, N-Queens, crosswords, and other constraint
-            satisfaction problems—that models have likely seen many times during
-            training. These problems are solvable with broadly similar
-            techniques, such as recursive backtracking: enumerate potential
-            solution layouts, explore candidate assignments, and backtrack and
-            prune branches when assignments violate constraints. Examining the
-            API response objects, which reveal the models’ code execution calls
-            and the code they ran, shows that in the successful tool-mediated
-            solves, models always implemented some variation of recursive
-            backtracking to solve the puzzle.
+            <i>Pips</i>? The basic explanation is that, when given access to a
+            coding environment, models often write code to solve the puzzle,
+            rather than relying purely on internal reasoning. Even if
+            <i>Pips</i> is somewhat novel, it belongs to a class of puzzles—like
+            Sudoku, N-Queens, crosswords, and other constraint satisfaction
+            problems—that models have likely seen many times during training.
+            These problems are solvable with broadly similar techniques, such as
+            recursive backtracking: enumerate potential solution layouts,
+            explore candidate assignments, and backtrack and prune branches when
+            assignments violate constraints. Examining the API response objects,
+            which reveal the models’ code execution calls and the code they ran,
+            shows that in the successful tool-mediated solves, models always
+            implemented some variation of recursive backtracking to solve the
+            puzzle.
           </p>
 
           <p>
             This also helps explain why many models without tools struggled with
-            the puzzle and/or required heavy token consumption to solve it,
+            the puzzle or required heavy token consumption to solve it,
             especially as the puzzles became harder. Without tools, models have
             to perform both the recursive search process and the accompanying
             bookkeeping inside their reasoning context: tracking which cells are
@@ -414,12 +423,12 @@ wait, then region D cannot be satisfied; let me go back.”</code></pre>
             underlying algorithm is not exotic, and the models have likely seen
             many examples of recursive backtracking and constraint satisfaction
             problems. But the solver is not trivial either, and the model is not
-            simply reproducing a known "<i>Pips</i> solver."
+            simply reproducing a known ”<i>Pips</i> solver.”
           </p>
 
           <p>
             Consider, for example, a simple <i>Pips</i> puzzle like this one,
-            from May 11th:
+            from May 11:
           </p>
 
           <img
@@ -428,7 +437,7 @@ wait, then region D cannot be satisfied; let me go back.”</code></pre>
             alt=""
           />
 
-          <p>This puzzle gets represented to the model as the grid:</p>
+          <p>This puzzle is represented to the model as the grid:</p>
 
           <pre><code>['unconstrained', 'unconstrained', 'A']
 ['B', null, 'A']
@@ -494,9 +503,9 @@ C: {constraint: "sum", value: 10}</code></pre>
             can be substantially more complex than the one above. Recursively
             laying tiles while checking against the regional constraints
             requires some delicate coordination between the various data
-            structures representing the puzzle. In other words, to say that the
-            model simply "solves the puzzle with code" can downplay, in my
-            opinion, how impressive what it does is.
+            structures representing the puzzle. In other words, saying that the
+            model simply “solves the puzzle with code” can understate how
+            impressive the result is.
           </p>
 
           <h4>Agentic loop failures</h4>
@@ -507,11 +516,10 @@ C: {constraint: "sum", value: 10}</code></pre>
             thinking solved only 55% of hard puzzles even when it had access to
             a code tool. Other models did better, but failed often enough that
             it was interesting to me to try to understand why. Were they, for
-            example, writing an incorrect solver? Although I didn’t investigate
-            every failure—these became apparent only as I generated results; if
-            I were running the experiment again, I would track them more
-            systematically from the start—I looked at enough of them to see
-            three recurring failure modes.
+            example, writing an incorrect solver? Although I did not investigate
+            every failure systematically—these patterns became apparent only as
+            I generated results—I looked at enough failures to see three
+            recurring failure modes.
           </p>
 
           <p>
@@ -522,19 +530,19 @@ C: {constraint: "sum", value: 10}</code></pre>
             and then make one small error in the response they sent back to the
             client. Because tiles in
             <i>Pips</i> can be rotated, the code tool would often return a
-            perfectly correct result wherein some tiles were reversed from their
-            original orientation. For example, if tile <code>[5, 6]</code> went
-            into the cells at coordinates <code>[0, 1]</code> and
-            <code>[0, 0]</code>, the solver might return something like
-            <code>{tile: [6, 5], cells: [[0, 0], [0, 1]]}</code>. The model
-            would then receive this response and notice that the tile had
-            originally been sent as <code>[5, 6]</code>. In its final JSON
-            response, it would ‘innocently’ restore the tile to its original
-            orientation, without also reversing the cell coordinates, thus
-            returning an ultimately incorrect solution. This error was seen
-            repeatedly when looking through the API response objects, despite
-            the puzzle instructions explicitly stating that tiles can be
-            reversed and that orientation matters in a correct response.
+            perfectly correct result in which some tiles were reversed from
+            their original orientation. For example, if tile
+            <code>[5, 6]</code> went into the cells at coordinates
+            <code>[0, 1]</code> and <code>[0, 0]</code>, the solver might return
+            something like <code>{tile: [6, 5], cells: [[0, 0], [0, 1]]}</code>.
+            The model would then receive this response and notice that the tile
+            had originally been sent as <code>[5, 6]</code>. In its final JSON
+            response, it would restore the tile to its original orientation,
+            without also reversing the cell coordinates, thus returning an
+            ultimately incorrect solution. This error was seen repeatedly when
+            looking through the API response objects, despite the puzzle
+            instructions explicitly stating that tiles can be reversed and that
+            orientation matters in a correct response.
           </p>
 
           <figure>
