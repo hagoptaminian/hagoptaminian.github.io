@@ -518,7 +518,7 @@ C: {constraint: "sum", value: 10}</code></pre>
             it was interesting to me to try to understand why. Were they, for
             example, writing an incorrect solver? Although I did not investigate
             every failure systematically—these patterns became apparent only as
-            I generated results—I looked at enough failures to see three
+            I generated results—I looked at enough of them to see three
             recurring failure modes.
           </p>
 
@@ -569,7 +569,7 @@ C: {constraint: "sum", value: 10}</code></pre>
             more reliable strategy). Conversely, without a thinking budget, the
             models were quicker to write a solver and delegate to the tool,
             perhaps because they had little choice but to do so. Thus, under the
-            ‘with-tools’ setting, Claude Sonnet 4.6 (no thinking) solved 75% of
+            tool-enabled setting, Claude Sonnet 4.6 (no thinking) solved 75% of
             hard puzzles (vs. 45% w/adaptive thinking), and Opus 4.7 (no
             thinking) solved 85% of hard puzzles (vs. 55% w/adaptive thinking).
           </p>
@@ -578,8 +578,8 @@ C: {constraint: "sum", value: 10}</code></pre>
             The third failure mode was unique to Gemini 3 Flash, and accounted
             for 10 of that model’s 13 failures to solve the puzzle (across
             thinking levels and puzzle difficulties). For some reason, the
-            model-tool combination would sometimes end up stuck in an endless
-            loop, until Gemini terminated the API call with a
+            model-tool loop would sometimes get stuck in an endless cycle, until
+            Gemini terminated the API call with a
             <code>TOO_MANY_TOOL_CALLS</code> error message (and a huge tool
             usage token count). In these cases, the tool would generate a
             solution, but Gemini would never cleanly stop and return an answer.
