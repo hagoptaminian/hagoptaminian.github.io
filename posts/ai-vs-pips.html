@@ -90,18 +90,16 @@
           <p>
             Despite its slightly unfamiliar format, <i>Pips</i> belongs to a
             class of constraint satisfaction problems that can be solved with a
-            fairly standard “backtracking“ algorithm—that is, an algorithm that
+            fairly standard “backtracking” algorithm—that is, an algorithm that
             recursively examines candidate board layouts and prunes branches
             which turn out to be dead ends, until it finds a valid solution.
-            When given access to a code tool—all of the models tested here have
-            a native implementation of such a tool, which can be enabled in API
-            requests—models generally solve <i>Pips</i> by writing a
-            backtracking algorithm and executing it via the tool. By contrast,
-            without a code tool, models end up trying to implement a similar
-            algorithm inside their reasoning context, an environment poorly
-            suited to preserving and manipulating precise, complex state, such
-            as the current board layout, which tiles have been used, and the
-            regional sums.
+            When given access to a code tool, models generally solve
+            <i>Pips</i> by writing a backtracking algorithm and executing it via
+            the tool. By contrast, without a code tool, models end up trying to
+            implement a similar algorithm inside their reasoning context, an
+            environment poorly suited to preserving and manipulating precise,
+            complex state, such as the current board layout, which tiles have
+            been used, and the regional sums.
           </p>
           <p>
             Although model intelligence is solving <i>Pips</i> in both settings,
@@ -110,7 +108,7 @@
             maintain and manipulate the problem state inside its own context.
             With a code tool, the model’s role shifts toward recognizing that
             the puzzle can be solved algorithmically, formulating a solving
-            strategy, writing code to carry it out, and interfacing with the
+            strategy, writing code to carry it out, and interacting with the
             tool.
           </p>
           <p>
@@ -149,12 +147,13 @@
           <h4>Experimental Setup</h4>
           <p>
             One of the challenges in running the experiment was that there was
-            no straightforward, standardized way of sending puzzles to the model
-            APIs. For several reasons, it didn’t make sense to send screenshots
-            of the puzzle. This would have entangled models’ puzzle-solving
-            ability with their image recognition and parsing capabilities, and
-            introduced complications such as verifying that models had parsed a
-            puzzle correctly and validating their proposed solutions.
+            no straightforward, standardized way of sending puzzles to the
+            models. For several reasons, it didn’t make sense to send
+            screenshots of the puzzle. This would have entangled models’
+            puzzle-solving ability with their image recognition and parsing
+            capabilities, and introduced complications such as verifying that
+            models had parsed a puzzle correctly and validating their proposed
+            solutions.
           </p>
 
           <p>
@@ -163,7 +162,7 @@
             the New York Times puzzle: lay out the grid, assign regional
             constraints, and specify available tiles.
           </p>
-          <p>Each API call included three main pieces of puzzle data:</p>
+          <p>Each API call included three pieces of puzzle data:</p>
 
           <ul class="spaced-out-list">
             <li>
